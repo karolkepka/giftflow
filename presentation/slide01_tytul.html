@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>GiftFlow · Workflow zakupu prezentów i nagród</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .cover-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 30px;
+        align-items: center;
+        min-height: 0;
+    }
+    .cover-left { display: flex; flex-direction: column; gap: 18px; }
+    .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-start;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--green-bright);
+        background: var(--green-soft);
+        border: 1px solid var(--green-border);
+        padding: 7px 14px;
+        border-radius: 999px;
+    }
+    .cover-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 41px;
+        font-weight: 800;
+        color: white;
+        line-height: 1.08;
+    }
+    .cover-title .hl {
+        background: var(--accent-grad);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .cover-sub { color: var(--muted); font-size: 16px; line-height: 1.5; max-width: 560px; }
+    .deliverables { display: flex; flex-wrap: wrap; gap: 8px; max-width: 600px; }
+    .author-row {
+        display: flex; align-items: center; gap: 14px; margin-top: 6px;
+        padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .author-avatar {
+        width: 52px; height: 52px; border-radius: 50%;
+        background: var(--accent-grad); color: #16210a;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 19px;
+        flex-shrink: 0;
+    }
+    .author-name { font-size: 16px; font-weight: 700; color: white; }
+    .author-role { font-size: 12px; color: var(--green-bright); }
+    .author-meta { font-size: 11px; color: var(--dim); margin-top: 2px; }
+    .cover-visual {
+        position: relative; border-radius: 18px; overflow: hidden;
+        border: 1px solid rgba(126,186,66,0.3);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+        height: 430px;
+    }
+    .cover-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cover-visual::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(160deg, rgba(22,29,51,0) 40%, rgba(22,29,51,0.55) 100%);
+    }
+    .visual-tag {
+        position: absolute; left: 14px; bottom: 14px; z-index: 2;
+        font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #cbd5e1;
+        background: rgba(22,29,51,0.8); border: 1px solid rgba(126,186,66,0.3);
+        padding: 6px 10px; border-radius: 8px;
+    }
+    .stack-strip {
+        display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim);
+    }
+    .stack-strip .tag { font-family: 'Inter', sans-serif; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-gifts"></i></div>
+            <div>
+                <div class="case-label">Propozycja architektury danych · End-to-end</div>
+                <div class="logo-text">Workflow zakupu prezentów i nagród</div>
+                <div class="logo-subtitle">Automatyzacja obiegu wniosków, akceptacji, archiwizacji i analityki wydatków</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">01 / 18</span>
+            <span class="status-badge"><i class="fas fa-cloud"></i> Azure · Serverless</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="cover-grid">
+        <div class="cover-left">
+            <span class="kicker"><i class="fas fa-diagram-project"></i> Architektura danych end-to-end</span>
+            <div class="cover-title">
+                Od wniosku pracownika<br>do <span class="hl">analityki wydatków</span>
+            </div>
+            <div class="cover-sub">
+                Kompleksowy projekt rozwiązania: zgłoszenie zapotrzebowania &rarr; weryfikacja progu <strong>1000&nbsp;PLN</strong> &rarr; decyzja &rarr; powiadomienie &rarr; bezpieczne archiwum &rarr; raportowanie.
+            </div>
+            <div class="deliverables">
+                <span class="tag"><i class="fas fa-sitemap"></i> Diagram architektury</span>
+                <span class="tag"><i class="fas fa-scale-balanced"></i> Build vs Buy</span>
+                <span class="tag"><i class="fas fa-database"></i> Model danych 3NF</span>
+                <span class="tag"><i class="fas fa-chart-column"></i> Analityka BI</span>
+                <span class="tag"><i class="fas fa-code"></i> Kod (FastAPI / Terraform)</span>
+                <span class="tag tag--neutral"><i class="fas fa-shield-halved"></i> Bezpieczeństwo &amp; koszty</span>
+            </div>
+        </div>
+        <div class="cover-right">
+            <div class="cover-visual">
+                <img src="assets/hero-cover.png" alt="Wizualizacja workflow akceptacji w chmurze Azure">
+                <span class="visual-tag">workflow · approval gate · cloud archive</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

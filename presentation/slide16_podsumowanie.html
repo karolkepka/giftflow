@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Podsumowanie i zgodność z wymaganiami</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; height: 100%; min-height: 0; }
+    .col { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+    .req { display: flex; gap: 12px; align-items: center; flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 11px; padding: 13px 15px; transition: all 0.3s ease; }
+    .req:hover { background: var(--green-soft); border-color: var(--green-border); transform: translateX(3px); }
+    .req .ck { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-grad); color: #16210a; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+    .req h6 { font-size: 14px; color: #f1f5f9; font-weight: 600; }
+    .req p { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+    .qcards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; grid-auto-rows: 1fr; }
+    .qc { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 11px; padding: 14px 15px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
+    .qc:hover { background: var(--green-soft); border-color: var(--green-border); transform: translateY(-2px); }
+    .qc h6 { font-family:'Montserrat',sans-serif; font-size: 13.5px; color: #f1f5f9; font-weight: 700; display: flex; align-items: center; gap: 9px; margin-bottom: 6px; }
+    .qc h6 i { color: var(--green-bright); }
+    .qc p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .artefacts { display: flex; flex-wrap: wrap; gap: 9px; }
+    .artefacts .tag { font-size: 12px; padding: 7px 12px; }
+    .closing { display: flex; align-items: center; gap: 16px; background: var(--panel-bg); border: 1px solid var(--green-border); border-radius: 14px; padding: 16px 20px; flex-shrink: 0; }
+    .closing i { color: var(--green-bright); font-size: 24px; flex-shrink: 0; }
+    .closing p { font-size: 13.5px; color: #cbd5e1; line-height: 1.5; } .closing b { color: white; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-flag-checkered"></i></div>
+            <div>
+                <div class="case-label">Podsumowanie</div>
+                <div class="logo-text">Zgodność z wymaganiami i atrybuty jakościowe</div>
+                <div class="logo-subtitle">Pełne pokrycie scenariusza · skalowalność · bezpieczeństwo · koszty</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">18 / 18</span>
+            <span class="status-badge"><i class="fas fa-circle-check"></i> End-to-end</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="grid">
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-list-check"></i> Pokrycie scenariusza (kroki 1–5)</div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>1 · Zgłoszenie zapotrzebowania</h6><p>Forms / Power Apps &rarr; <code>POST /requests</code> (cel, beneficjent, kwota).</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>2 · Weryfikacja progu 1000 PLN</h6><p>Deterministyczna <code>ApprovalPolicy</code> &mdash; auto/przełożony lub Dyrektor.</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>3 · Decyzja + automatyczny feedback</h6><p>Service Bus &rarr; powiadomienie zwrotne (e-mail).</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>4 · Bezpieczne archiwum chmurowe</h6><p>Niezmienny audyt JSON w Blob WORM + szyfrowanie.</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>5 · Analityka wydatków</h6><p>Fabric (star schema) + Power BI: dział × miesiąc × typ.</p></div></div>
+        </div>
+
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-award"></i> Atrybuty jakościowe</div>
+            <div class="qcards">
+                <div class="qc"><h6><i class="fas fa-arrows-up-down-left-right"></i> Skalowalność</h6><p>Serverless, event-driven, scale-to-zero; rośnie z wolumenem bez przeprojektowania.</p></div>
+                <div class="qc"><h6><i class="fas fa-screwdriver-wrench"></i> Utrzymanie</h6><p>IaC (Terraform), CI/CD, observability; kod OOP testowalny (jedna klasa = plik).</p></div>
+                <div class="qc"><h6><i class="fas fa-shield-halved"></i> Bezpieczeństwo</h6><p>Entra ID RBAC (Dyrektor vs pracownik), Key Vault, WORM, separacja obowiązków.</p></div>
+                <div class="qc"><h6><i class="fas fa-coins"></i> Koszty</h6><p>Pay-per-use, ~0,45 zł/wniosek; dźwignie FinOps i budżety/alerty.</p></div>
+            </div>
+            <div class="panel-head" style="margin-top:4px"><i class="fas fa-folder-open"></i> Dostarczone artefakty</div>
+            <div class="artefacts">
+                <span class="tag">Architektura Azure</span>
+                <span class="tag">Build vs Buy</span>
+                <span class="tag">ERD 3NF</span>
+                <span class="tag">DFD</span>
+                <span class="tag">Sekwencja</span>
+                <span class="tag">Przepływ animowany</span>
+                <span class="tag">Analityka BI</span>
+                <span class="tag">FastAPI (OOP)</span>
+                <span class="tag">Terraform + SQL</span>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="closing">
+        <i class="fas fa-lightbulb"></i>
+        <p><b>Rekomendacja:</b> rdzeń pro-code na Azure serverless (FastAPI), 3NF dla integralności + star schema dla analityki, GenAI punktowo (copilot BI, kategoryzacja). Rozwiązanie realizuje cały scenariusz end-to-end, jest skalowalne, bezpieczne i optymalne kosztowo.</p>
+    </div>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

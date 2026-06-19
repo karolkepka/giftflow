@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Założenia projektowe</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .wrap { display: flex; flex-direction: column; gap: 14px; height: 100%; min-height: 0; }
+    .cards { display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; }
+    .card {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1;
+        border-radius: 14px; padding: 16px 20px;
+        background: var(--card-bg); border: 1px solid var(--card-border);
+        transition: all 0.3s ease;
+    }
+    .card:hover { border-color: var(--green-border); box-shadow: 0 12px 28px rgba(0,0,0,0.28); }
+    .side { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+    .side-head { display: flex; align-items: center; gap: 11px; }
+    .side-ic {
+        width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+        display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .ic-assume { background: rgba(120,134,160,0.22); color: #cdd7e6; }
+    .ic-practice { background: rgba(126,186,66,0.16); color: var(--green-bright); }
+    .side-kick { font-family:'Montserrat',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+    .side-title { font-family:'Montserrat',sans-serif; font-size: 15.5px; font-weight: 700; color: white; line-height: 1.15; }
+    .side p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+    .side p strong { color: #e2e8f0; }
+    .note {
+        display: flex; align-items: flex-start; gap: 12px; flex-shrink: 0;
+        background: var(--panel-bg); border: 1px solid var(--green-border); border-radius: 12px; padding: 12px 16px;
+    }
+    .note > i { color: var(--green-bright); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+    .note p { font-size: 12px; color: #cbd5e1; line-height: 1.45; }
+    .note p strong { color: white; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-compass-drafting"></i></div>
+            <div>
+                <div class="case-label">Dział: Analiza biznesowa · 2/4</div>
+                <div class="logo-text">Założenia projektowe</div>
+                <div class="logo-subtitle">Co przyjęto w tym decku — i co w realnym wdrożeniu doprecyzowałbym na starcie</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">03 / 18</span>
+            <span class="status-badge"><i class="fas fa-circle-info"></i> Scope &amp; kontekst</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="wrap">
+        <div class="cards">
+            <div class="card">
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-assume"><i class="fas fa-lock"></i></div>
+                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Zamknięty zakres wymagań</div></div>
+                    </div>
+                    <p>Prezentacja zakłada, że <strong>wymagania zostały zebrane i są zamknięte</strong> — scenariusz 5 kroków i reguła 1000 PLN są punktem wyjścia do architektury.</p>
+                </div>
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-practice"><i class="fas fa-magnifying-glass-chart"></i></div>
+                        <div><div class="side-kick">W praktyce</div><div class="side-title">Analiza rozwoju i integracji</div></div>
+                    </div>
+                    <p>Przed wdrożeniem dodałbym <strong>analizę z perspektywy rozwoju</strong>: nowe typy wniosków, kolejne progi, integracje z HR/ERP i mapę przyszłych przepływów — żeby architektura nie zamknęła się po pierwszym release.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-assume"><i class="fas fa-cube"></i></div>
+                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Samodzielny system</div></div>
+                    </div>
+                    <p>Deck opisuje <strong>autonomiczne rozwiązanie</strong> (własny backend, dane, audyt, analityka) — bez wiązania z konkretnym istniejącym landscape’em organizacji.</p>
+                </div>
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-practice"><i class="fas fa-puzzle-piece"></i></div>
+                        <div><div class="side-kick">W praktyce</div><div class="side-title">Dopasowanie do ekosystemu IT</div></div>
+                    </div>
+                    <p>Architekturę <strong>dopasowałbym do systemów już w użyciu</strong>, kompetencji zespołu utrzymaniowego i ogólnej wizji rozwoju IT — np. hybryda low-code + pro-code, wspólne tożsamości i standardy integracji.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-assume"><i class="fas fa-microchip"></i></div>
+                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Ambitne podejście techniczne</div></div>
+                    </div>
+                    <p>Deck <strong>ewaluuje złożone, pro-code rozwiązanie</strong> (serverless, własny backend, dane, analityka) — zakładając <strong>mocny zespół inżynieryjny</strong> do budowy i utrzymania.</p>
+                </div>
+                <div class="side">
+                    <div class="side-head">
+                        <div class="side-ic ic-practice"><i class="fas fa-bolt"></i></div>
+                        <div><div class="side-kick">W praktyce</div><div class="side-title">Prostota i gotowe produkty</div></div>
+                    </div>
+                    <p>Przy chęci czegoś prostego — <strong>formularz Power Apps</strong> z ekosystemu Microsoft. W wielu firmach enterprise standardem jest <strong>kupno gotowego rozwiązania z rynku</strong> i wdrożenie w nim całego procesu decyzyjnego; natomiast rewolucja GenAI zmienia mocno zasady gry i mamy możliwość bezpiecznej eksploracji nowego podejścia do pracy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <i class="fas fa-robot"></i>
+            <p><strong>GenAI i decyzja zespołu:</strong> obecna rewolucja GenAI może częściowo zmienić te zasady (copilot BI, kategoryzacja, automatyzacja). Ostateczny wybór build vs buy vs low-code wymaga <strong>szerszej dyskusji w zespole technicznym</strong> — ten deck pokazuje wariant referencyjny pro-code, nie jedyną słuszną ścieżkę.</p>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

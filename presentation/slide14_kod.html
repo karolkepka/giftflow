@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Kod — FastAPI / Python (OOP)</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 20px; height: 100%; min-height: 0; }
+    .col { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+    .code { font-size: 11.6px; line-height: 1.55; flex-shrink: 0; }
+    .code.small { font-size: 10.8px; line-height: 1.5; }
+    .codecap { font-family:'JetBrains Mono',monospace; font-size: 11.5px; color: var(--dim); margin-bottom: 6px; }
+    .codecap b { color: #9ad94f; }
+    .classlist { display: flex; flex-direction: column; gap: 9px; }
+    .clrow { display: flex; gap: 10px; align-items: baseline; font-size: 12.5px; }
+    .clname { font-family:'JetBrains Mono',monospace; color: #9ad94f; min-width: 158px; }
+    .cldesc { color: var(--muted); }
+    .conv { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .conv li { font-size: 12.5px; color: var(--muted); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; }
+    .conv li::before { content: '\f0da'; font-family:'Font Awesome 6 Free'; font-weight: 900; color: var(--green); font-size: 11px; margin-top: 2px; }
+    .conv li b { color: #e2e8f0; }
+    .testbar { display: flex; align-items: center; gap: 12px; background: var(--green-soft); border: 1px solid var(--green-border); border-radius: 11px; padding: 12px 15px; }
+    .testbar i { color: #9ad94f; font-size: 17px; }
+    .testbar span { font-size: 13px; color: #d7e2c4; } .testbar b { color: white; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fab fa-python"></i></div>
+            <div>
+                <div class="case-label">Dział: Implementacja · 1/2</div>
+                <div class="logo-text">Kod — FastAPI / Python (OOP)</div>
+                <div class="logo-subtitle">Czytelny podział na klasy wg zastosowania · jedna klasa = jeden plik</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">16 / 18</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="grid">
+        <div class="col">
+            <div>
+                <div class="codecap"><b>domain/ApprovalPolicy.py</b> — deterministyczna reguła progu 1000 PLN</div>
+<pre class="code"><span class="k">class</span> <span class="f">ApprovalPolicy</span>:
+    <span class="k">def</span> <span class="f">__init__</span>(self):
+        self.log = <span class="f">Logger</span>.get()
+        self.config = {
+            <span class="s">"THRESHOLD_PLN"</span>: <span class="f">Decimal</span>(os.getenv(<span class="s">"APPROVAL_THRESHOLD_PLN"</span>, <span class="s">"1000"</span>)),
+        }
+
+    <span class="k">def</span> <span class="f">evaluate</span>(self, amount: Decimal, currency=<span class="s">"PLN"</span>) -&gt; ApprovalRoute:
+        threshold = self.config[<span class="s">"THRESHOLD_PLN"</span>]
+        <span class="k">if</span> amount &gt; threshold:                       <span class="c"># &gt; 1000 PLN</span>
+            <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.DIRECTOR, <span class="k">False</span>, <span class="s">"Dyrektor"</span>)
+        <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.AUTO, <span class="k">True</span>, <span class="s">"auto/przełożony"</span>)</pre>
+            </div>
+            <div>
+                <div class="codecap"><b>services/RequestService.py</b> — orkiestracja przepływu (kroki 1–5)</div>
+<pre class="code small"><span class="k">class</span> <span class="f">RequestService</span>:
+    <span class="k">def</span> <span class="f">submit</span>(self, request: PurchaseRequest) -&gt; PurchaseRequest:
+        route = self.policy.evaluate(request.amount, request.currency)
+        request.request_id = self.repo.save(request)         <span class="c"># Azure SQL (3NF)</span>
+        self.archive.append(<span class="s">"RequestSubmitted"</span>, request)      <span class="c"># Blob WORM</span>
+        <span class="k">if</span> route.auto_approve:
+            <span class="k">return</span> self._finalize(request, RequestStatus.AUTO_APPROVED)
+        self.notifier.publish(<span class="s">"ApprovalRequired"</span>, {...})       <span class="c"># Service Bus</span>
+        <span class="k">return</span> request</pre>
+            </div>
+            <div class="testbar"><i class="fas fa-circle-check"></i><span><b>pytest</b> — reguła progu zweryfikowana: 250 zł &rarr; AUTO · 1000 zł &rarr; AUTO · 1000,01 zł &rarr; DIRECTOR · EUR &rarr; błąd</span></div>
+        </div>
+
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-cubes"></i> Podział na klasy (wg zastosowania)</div>
+            <div class="classlist">
+                <div class="clrow"><span class="clname">PurchaseRequest</span><span class="cldesc">encja + enumy stanu</span></div>
+                <div class="clrow"><span class="clname">ApprovalPolicy</span><span class="cldesc">reguła progu 1000 PLN</span></div>
+                <div class="clrow"><span class="clname">RequestService</span><span class="cldesc">orkiestracja przepływu</span></div>
+                <div class="clrow"><span class="clname">RequestRepository</span><span class="cldesc">Azure SQL (3NF)</span></div>
+                <div class="clrow"><span class="clname">NotificationService</span><span class="cldesc">Service Bus + feedback</span></div>
+                <div class="clrow"><span class="clname">AuditArchive</span><span class="cldesc">Blob WORM (audyt)</span></div>
+                <div class="clrow"><span class="clname">Logger</span><span class="cldesc">Logger.get()</span></div>
+            </div>
+            <div class="panel-head" style="margin-top:6px"><i class="fas fa-list-check"></i> Konwencje (wzorzec projektu)</div>
+            <ul class="conv">
+                <li><b>Jedna klasa = jeden plik</b> (PascalCase), jasna odpowiedzialność.</li>
+                <li><b>Logger.get()</b> + <b>self.config = {os.getenv(...)}</b> w konstruktorze.</li>
+                <li>Type hints i docstrings; metody prywatne z prefiksem <b>_</b>.</li>
+                <li>Domena <b>niezależna od SDK</b> chmury &rarr; testowalność (DI/mocki).</li>
+                <li><b>Zero sekretów</b> w kodzie — Managed Identity + Key Vault.</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

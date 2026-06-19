@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Model danych — ERD (3NF)</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .wrap { display: flex; flex-direction: column; gap: 10px; height: 100%; min-height: 0; }
+    .erd { flex: 1; min-height: 0; border-radius: 14px; padding: 6px 10px; background: var(--panel-bg); border: 1px solid var(--green-border); }
+    .erd svg { width: 100%; height: 100%; display: block; }
+    .ent { transition: all 0.3s ease; }
+    .ent:hover rect.body { fill: rgba(126,186,66,0.12); }
+    .e-name { font-family:'Montserrat',sans-serif; font-size: 11.5px; font-weight: 700; fill: #16210a; }
+    .f-pk { font-family:'JetBrains Mono',monospace; font-size: 10px; fill: #9ad94f; font-weight: 600; }
+    .f-fk { font-family:'JetBrains Mono',monospace; font-size: 10px; fill: #f0b870; }
+    .f-at { font-family:'JetBrains Mono',monospace; font-size: 10px; fill: #c2cde0; }
+    .rel { stroke: #7eba42; stroke-width: 1.6; fill: none; }
+    .card { font-family:'JetBrains Mono',monospace; font-size: 11px; fill: #9ad94f; }
+    .legend-row { display: flex; align-items: center; justify-content: center; gap: 18px; flex-shrink: 0; font-size: 10.5px; color: var(--muted); }
+    .legend-row b { color: #e2e8f0; }
+    .key-pk { color: #9ad94f; font-family:'JetBrains Mono',monospace; }
+    .key-fk { color: #f0b870; font-family:'JetBrains Mono',monospace; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-diagram-predecessor"></i></div>
+            <div>
+                <div class="case-label">Dział: Inżynieria danych · 1/2</div>
+                <div class="logo-text">Model danych — ERD (3NF)</div>
+                <div class="logo-subtitle">Znormalizowany schemat OLTP w Azure SQL · źródło prawdy dla wniosków, decyzji i audytu</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">09 / 18</span>
+            <span class="status-badge"><i class="fas fa-table-cells"></i> 3. postać normalna</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="wrap">
+        <div class="erd">
+            <svg viewBox="0 0 1200 446" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
+                <title>Diagram ERD w 3. postaci normalnej</title>
+
+                <!-- ===== relationships (under boxes) ===== -->
+                <path class="rel" d="M108,100 V148"/>
+                <path class="rel" d="M202,210 H452"/>
+                <path class="rel" d="M202,366 L452,300"/>
+                <path class="rel" d="M553,106 V148"/>
+                <path class="rel" d="M687,196 L938,86"/>
+                <path class="rel" d="M687,232 H938"/>
+                <path class="rel" d="M687,292 L938,382"/>
+                <path class="rel" d="M118,148 C70,120 70,150 118,150" stroke-dasharray="3 4"/>
+
+                <!-- cardinality -->
+                <text class="card" x="96" y="120">1</text><text class="card" x="96" y="146">&#8734;</text>
+                <text class="card" x="214" y="204">1</text><text class="card" x="438" y="204">&#8734;</text>
+                <text class="card" x="214" y="360">1</text><text class="card" x="436" y="308">&#8734;</text>
+                <text class="card" x="540" y="124">1</text><text class="card" x="540" y="146">&#8734;</text>
+                <text class="card" x="700" y="190">1</text><text class="card" x="918" y="92">&#8734;</text>
+                <text class="card" x="700" y="226">1</text><text class="card" x="918" y="228">&#8734;</text>
+                <text class="card" x="700" y="300">1</text><text class="card" x="918" y="388">&#8734;</text>
+
+                <!-- ===== entities ===== -->
+                <!-- department -->
+                <g class="ent">
+                    <rect class="body" x="14" y="24" width="188" height="76" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="14" y="24" width="188" height="22" rx="8" fill="#7eba42"/><rect x="14" y="38" width="188" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="24" y="39">department</text>
+                    <text class="f-pk" x="24" y="62">PK department_id</text>
+                    <text class="f-at" x="24" y="78">name</text>
+                    <text class="f-at" x="24" y="94">cost_center</text>
+                </g>
+                <!-- employee -->
+                <g class="ent">
+                    <rect class="body" x="14" y="148" width="188" height="124" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="14" y="148" width="188" height="22" rx="8" fill="#7eba42"/><rect x="14" y="162" width="188" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="24" y="163">employee</text>
+                    <text class="f-pk" x="24" y="186">PK employee_id</text>
+                    <text class="f-fk" x="24" y="202">FK department_id</text>
+                    <text class="f-fk" x="24" y="218">FK manager_id</text>
+                    <text class="f-at" x="24" y="234">full_name · email</text>
+                    <text class="f-at" x="24" y="250">role (enum)</text>
+                    <text class="f-at" x="24" y="266">entra_oid</text>
+                </g>
+                <!-- gift_type -->
+                <g class="ent">
+                    <rect class="body" x="14" y="330" width="188" height="76" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="14" y="330" width="188" height="22" rx="8" fill="#7eba42"/><rect x="14" y="344" width="188" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="24" y="345">gift_type</text>
+                    <text class="f-pk" x="24" y="368">PK gift_type_id</text>
+                    <text class="f-at" x="24" y="384">name</text>
+                    <text class="f-at" x="24" y="400">category</text>
+                </g>
+                <!-- beneficiary -->
+                <g class="ent">
+                    <rect class="body" x="452" y="14" width="202" height="92" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="452" y="14" width="202" height="22" rx="8" fill="#7eba42"/><rect x="452" y="28" width="202" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="462" y="29">beneficiary</text>
+                    <text class="f-pk" x="462" y="52">PK beneficiary_id</text>
+                    <text class="f-at" x="462" y="68">type (client/employee)</text>
+                    <text class="f-at" x="462" y="84">name · external_ref</text>
+                </g>
+                <!-- purchase_request (hub) -->
+                <g class="ent">
+                    <rect class="body" x="452" y="148" width="236" height="178" rx="8" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.5)" stroke-width="1.5"/>
+                    <rect x="452" y="148" width="236" height="22" rx="8" fill="#9ad94f"/><rect x="452" y="162" width="236" height="8" fill="#9ad94f"/>
+                    <text class="e-name" x="462" y="163">purchase_request</text>
+                    <text class="f-pk" x="462" y="186">PK request_id</text>
+                    <text class="f-fk" x="462" y="202">FK employee_id</text>
+                    <text class="f-fk" x="462" y="218">FK beneficiary_id</text>
+                    <text class="f-fk" x="462" y="234">FK gift_type_id</text>
+                    <text class="f-at" x="462" y="250">purpose</text>
+                    <text class="f-at" x="462" y="266">amount · currency</text>
+                    <text class="f-at" x="462" y="282">status (enum)</text>
+                    <text class="f-at" x="462" y="298">created_at</text>
+                    <text class="f-at" x="462" y="314">updated_at</text>
+                </g>
+                <!-- approval -->
+                <g class="ent">
+                    <rect class="body" x="938" y="24" width="214" height="108" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="938" y="24" width="214" height="22" rx="8" fill="#7eba42"/><rect x="938" y="38" width="214" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="948" y="39">approval</text>
+                    <text class="f-pk" x="948" y="62">PK approval_id</text>
+                    <text class="f-fk" x="948" y="78">FK request_id</text>
+                    <text class="f-fk" x="948" y="94">FK approver_id</text>
+                    <text class="f-at" x="948" y="110">level · decision</text>
+                    <text class="f-at" x="948" y="126">decided_at · comment</text>
+                </g>
+                <!-- audit_log -->
+                <g class="ent">
+                    <rect class="body" x="938" y="178" width="214" height="108" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="938" y="178" width="214" height="22" rx="8" fill="#7eba42"/><rect x="938" y="192" width="214" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="948" y="193">audit_log</text>
+                    <text class="f-pk" x="948" y="216">PK audit_id</text>
+                    <text class="f-fk" x="948" y="232">FK request_id</text>
+                    <text class="f-fk" x="948" y="248">FK actor_id</text>
+                    <text class="f-at" x="948" y="264">event_type · payload</text>
+                    <text class="f-at" x="948" y="280">created_at (UTC)</text>
+                </g>
+                <!-- notification -->
+                <g class="ent">
+                    <rect class="body" x="938" y="332" width="214" height="94" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(126,186,66,0.32)"/>
+                    <rect x="938" y="332" width="214" height="22" rx="8" fill="#7eba42"/><rect x="938" y="346" width="214" height="8" fill="#7eba42"/>
+                    <text class="e-name" x="948" y="347">notification</text>
+                    <text class="f-pk" x="948" y="370">PK notification_id</text>
+                    <text class="f-fk" x="948" y="386">FK request_id</text>
+                    <text class="f-at" x="948" y="402">channel · status</text>
+                    <text class="f-at" x="948" y="418">sent_at</text>
+                </g>
+            </svg>
+        </div>
+
+        <div class="legend-row">
+            <span><span class="key-pk">PK</span> klucz główny &nbsp;·&nbsp; <span class="key-fk">FK</span> klucz obcy &nbsp;·&nbsp; <b>1—&#8734;</b> jeden-do-wielu</span>
+            <span><b>self-ref:</b> employee.manager_id &rarr; employee &nbsp;·&nbsp; approval.approver_id &rarr; employee (Dyrektor / przełożony)</span>
+            <span><b>3NF:</b> słowniki (department, gift_type, beneficiary) wydzielone — brak redundancji i anomalii aktualizacji</span>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

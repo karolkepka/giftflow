@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Koszty i optymalizacja (FinOps)</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; height: 100%; min-height: 0; }
+    .col { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+    .cost-row { display: grid; grid-template-columns: 210px 1fr 90px; align-items: center; gap: 12px; }
+    .cost-name { font-size: 13px; color: #dfe7f2; display: flex; align-items: center; gap: 9px; }
+    .cost-name i { color: var(--green-bright); width: 18px; text-align: center; font-size: 14px; }
+    .cost-track { height: 18px; background: rgba(255,255,255,0.06); border-radius: 9px; overflow: hidden; }
+    .cost-fill { height: 100%; border-radius: 9px; background: var(--accent-grad); }
+    .cost-fill.amber { background: linear-gradient(90deg,#f0b870,#f3df8a); }
+    .cost-val { font-family:'JetBrains Mono',monospace; font-size: 12.5px; color: #c9e7a6; text-align: right; }
+    .total { display: flex; align-items: center; justify-content: space-between; background: var(--panel-bg); border: 1px solid var(--green-border); border-radius: 13px; padding: 16px 18px; margin-top: 2px; }
+    .total .t-lab { font-size: 13px; color: var(--muted); }
+    .total .t-lab b { color: white; font-size: 15px; }
+    .total .t-val { font-family:'Montserrat',sans-serif; font-weight: 800; font-size: 26px; color: #9ad94f; }
+    .total .t-val small { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+    .levers { display: flex; flex-direction: column; gap: 12px; flex: 1; justify-content: center; }
+    .lev { display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 11px; padding: 14px 15px; transition: all 0.3s ease; }
+    .lev:hover { background: var(--green-soft); border-color: var(--green-border); transform: translateX(3px); }
+    .lev i { color: var(--green-bright); font-size: 17px; margin-top: 1px; flex-shrink: 0; }
+    .lev h6 { font-size: 14px; color: #f1f5f9; font-weight: 600; }
+    .lev p { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-coins"></i></div>
+            <div>
+                <div class="case-label">Dział: Koszty &amp; FinOps</div>
+                <div class="logo-text">Koszty i optymalizacja kosztowa</div>
+                <div class="logo-subtitle">Model konsumpcyjny (pay-per-use) · szacunek dla ~1000 wniosków / miesiąc</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">15 / 18</span>
+            <span class="status-badge"><i class="fas fa-arrow-trend-down"></i> Scale-to-zero</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="grid">
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-receipt"></i> Szacunkowy koszt miesięczny (orientacyjnie, PLN)</div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-bolt"></i> Azure Functions</span><div class="cost-track"><div class="cost-fill" style="width:8%"></div></div><span class="cost-val">~0–20</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-database"></i> Azure SQL (serverless)</span><div class="cost-track"><div class="cost-fill" style="width:30%"></div></div><span class="cost-val">~80–130</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-envelopes-bulk"></i> Service Bus</span><div class="cost-track"><div class="cost-fill" style="width:14%"></div></div><span class="cost-val">~30–50</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-box-archive"></i> Blob + WORM archiwum</span><div class="cost-track"><div class="cost-fill" style="width:9%"></div></div><span class="cost-val">~10–30</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-network-wired"></i> API Management (Consumption)</span><div class="cost-track"><div class="cost-fill" style="width:12%"></div></div><span class="cost-val">~20–40</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-chart-pie"></i> Power BI Pro (5 odbiorców)</span><div class="cost-track"><div class="cost-fill amber" style="width:55%"></div></div><span class="cost-val">~225</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-shield-halved"></i> Key Vault · App Insights · e-mail</span><div class="cost-track"><div class="cost-fill" style="width:7%"></div></div><span class="cost-val">~10–25</span></div>
+            <div class="total">
+                <span class="t-lab">Razem (low–medium): <b>~400–520 PLN / mies.</b></span>
+                <span class="t-val">&asymp; 0,45 zł<small>/wniosek</small></span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-sliders"></i> Dźwignie optymalizacji</div>
+            <div class="levers">
+                <div class="lev"><i class="fas fa-power-off"></i><div><h6>Scale-to-zero</h6><p>Functions płatne za wywołania; SQL serverless z auto-pause poza godzinami pracy.</p></div></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

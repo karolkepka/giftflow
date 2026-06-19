@@ -1,0 +1,72 @@
+/**
+ * Shared responsive shell: design canvas stays 1280×720; scales down (and up to 1×)
+ * to fit the browser. Include after each slide’s own <style> so these rules apply.
+ */
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    min-height: 100%;
+    min-height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.slide-viewport {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    box-sizing: border-box;
+}
+
+.slide-scale-wrap {
+    position: relative;
+    width: calc(1280px * var(--slide-scale, 1));
+    height: calc(720px * var(--slide-scale, 1));
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.slide-scale-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1280px;
+    height: 720px;
+    transform: scale(var(--slide-scale, 1));
+    transform-origin: top left;
+    backface-visibility: hidden;
+}
+
+@media print {
+    html {
+        --slide-scale: 1 !important;
+    }
+
+    .slide-viewport {
+        overflow: visible;
+        min-height: auto;
+        padding: 0;
+    }
+
+    .slide-scale-wrap {
+        width: 1280px !important;
+        height: 720px !important;
+    }
+
+    .slide-scale-inner {
+        transform: none !important;
+    }
+}

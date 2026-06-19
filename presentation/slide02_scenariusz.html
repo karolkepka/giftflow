@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Scenariusz biznesowy i wymagania</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
+<style>
+    .body-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; height: 100%; min-height: 0; }
+    .col { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+
+    .timeline { display: flex; flex-direction: column; gap: 12px; flex: 1; justify-content: space-between; }
+    .tl-step {
+        display: flex; gap: 15px; align-items: center; flex: 1;
+        background: var(--card-bg); border: 1px solid var(--card-border);
+        border-radius: 12px; padding: 14px 18px; transition: all 0.3s ease;
+    }
+    .tl-step:hover { background: var(--green-soft); border-color: var(--green-border); transform: translateX(3px); }
+    .tl-num {
+        width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px;
+        background: var(--accent-grad); color: #16210a;
+        font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .tl-step h4 { font-size: 15px; color: #f1f5f9; font-weight: 600; margin-bottom: 3px; }
+    .tl-step p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+    .tl-step p strong { color: #d7e2c4; }
+
+    .gate {
+        border-radius: 14px; padding: 18px 18px;
+        background: var(--panel-bg); border: 1px solid var(--green-border);
+    }
+    .gate-title { font-family:'Montserrat',sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 14px; }
+    .gate-flow { display: flex; align-items: stretch; gap: 12px; }
+    .gate-input {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px; padding: 12px 16px; min-width: 108px;
+    }
+    .gate-input i { color: var(--green-bright); font-size: 20px; margin-bottom: 6px; }
+    .gate-input span { font-size: 12px; color: #cbd5e1; text-align: center; line-height: 1.35; }
+    .gate-branches { flex: 1; display: flex; flex-direction: column; gap: 11px; justify-content: center; }
+    .branch { display: flex; align-items: center; gap: 10px; border-radius: 10px; padding: 12px 14px; font-size: 13px; line-height: 1.4; }
+    .branch i.lead-ic { font-size: 16px; flex-shrink: 0; }
+    .branch--low { background: rgba(126,186,66,0.16); border: 1px solid var(--green-border); color: #d7e2c4; }
+    .branch--low i.lead-ic { color: var(--green-bright); }
+    .branch--high { background: rgba(240, 184, 112, 0.14); border: 1px solid rgba(240,184,112,0.4); color: #f0d2a8; }
+    .branch--high i.lead-ic { color: #f0b870; }
+    .branch b { color: white; }
+
+    .crit-wrap { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    .crit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+    .crit {
+        background: var(--card-bg); border: 1px solid var(--card-border);
+        border-radius: 12px; padding: 14px 15px; transition: all 0.3s ease;
+        display: flex; flex-direction: column; justify-content: center;
+    }
+    .crit:hover { background: var(--green-soft); border-color: var(--green-border); }
+    .crit h5 { font-size: 13.5px; color: #f1f5f9; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .crit h5 i { color: var(--green); }
+    .crit p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+</style>
+<link href="slides-rwd.css" rel="stylesheet">
+</head>
+<body>
+<div class="slide-viewport"><div class="slide-scale-wrap"><div class="slide-scale-inner">
+<div class="slide-container">
+<div class="stage">
+    <div class="s-header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div>
+                <div class="case-label">Dział: Analiza biznesowa · 1/4</div>
+                <div class="logo-text">Scenariusz i wymagania</div>
+                <div class="logo-subtitle">Ustrukturyzowany obieg zakupów prezentów oraz nagród dla klientów i pracowników</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="section-pill">02 / 18</span>
+            <span class="status-badge"><i class="fas fa-bullseye"></i> Problem &amp; cel</span>
+            <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
+        </div>
+    </div>
+
+    <div class="s-body">
+    <div class="body-grid">
+        <div class="col">
+            <div class="panel-head"><i class="fas fa-route"></i> Wymagany przepływ (Workflow)</div>
+            <div class="timeline">
+                <div class="tl-step"><div class="tl-num">1</div><div><h4>Zgłoszenie zapotrzebowania</h4><p>Pracownik podaje <strong>cel, beneficjenta, typ prezentu i kwotę</strong>.</p></div></div>
+                <div class="tl-step"><div class="tl-num">2</div><div><h4>Weryfikacja kwoty</h4><p>System klasyfikuje wniosek względem progu <strong>1000 PLN</strong> i wybiera ścieżkę akceptacji.</p></div></div>
+                <div class="tl-step"><div class="tl-num">3</div><div><h4>Decyzja i feedback</h4><p>Akceptacja lub odrzucenie &rarr; <strong>automatyczne powiadomienie</strong> wnioskodawcy.</p></div></div>
+                <div class="tl-step"><div class="tl-num">4</div><div><h4>Archiwizacja</h4><p>Transakcje, decyzje i metadane trafiają do <strong>bezpiecznego archiwum chmurowego</strong>.</p></div></div>
+                <div class="tl-step"><div class="tl-num">5</div><div><h4>Analityka wydatków</h4><p>Raportowanie w rozbiciu na <strong>działy, miesiące i typy prezentów</strong>.</p></div></div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="gate">
+                <div class="gate-title"><i class="fas fa-scale-balanced"></i> Reguła progu akceptacji</div>
+                <div class="gate-flow">
+                    <div class="gate-input"><i class="fas fa-coins"></i><span>Kwota<br>wniosku</span></div>
+                    <div class="gate-branches">
+                        <div class="branch branch--low"><i class="fas fa-circle-check lead-ic"></i><span><b>&le; 1000 PLN</b> — auto-akceptacja / akceptacja bezpośredniego przełożonego</span></div>
+                        <div class="branch branch--high"><i class="fas fa-user-tie lead-ic"></i><span><b>&gt; 1000 PLN</b> — bezwzględna akceptacja <b>Dyrektora Działu</b></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="crit-wrap">
+                <div class="panel-head"><i class="fas fa-circle-check"></i> Kryteria oceny — adresowane w decku</div>
+                <div class="crit-grid">
+                    <div class="crit"><h5><i class="fas fa-bullseye"></i> Dopasowanie</h5><p>Pełne pokrycie 5 kroków scenariusza.</p></div>
+                    <div class="crit"><h5><i class="fas fa-arrows-up-down-left-right"></i> Skalowalność</h5><p>Serverless, niski koszt utrzymania.</p></div>
+                    <div class="crit"><h5><i class="fas fa-shield-halved"></i> Bezpieczeństwo</h5><p>RBAC: Dyrektor vs pracownik.</p></div>
+                    <div class="crit"><h5><i class="fas fa-coins"></i> Koszty</h5><p>Model konsumpcyjny, FinOps.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <p class="foot-hint"><i class="fas fa-arrow-right"></i> Następny slajd: założenia projektowe — zakres wymagań i kontekst organizacji IT.</p>
+</div>
+<div class="bottom-bar"></div>
+</div>
+</div></div></div>
+<script src="slides-rwd.js" defer></script>
+<script src="slides-nav.js" defer></script>
+</body></html>

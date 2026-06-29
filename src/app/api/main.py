@@ -11,7 +11,7 @@ from app.utils.Logger import Logger
 
 log = Logger.get()
 
-app = FastAPI(title="GiftFlow API", version="1.0", description="Workflow zakupu prezentów i nagród")
+app = FastAPI(title="GiftFlow API", version="1.0", description="Gift and reward purchase workflow")
 
 
 class RequestIn(BaseModel):
@@ -34,7 +34,7 @@ def health() -> dict:
 
 @app.post("/requests", status_code=201)
 def create_request(body: RequestIn, service: RequestService = Depends(get_service)) -> dict:
-    """Krok 1–2: rejestracja wniosku i automatyczny ruting akceptacji."""
+    """Steps 1–2: register request and automatic approval routing."""
     request = PurchaseRequest(**body.model_dump())
     result = service.submit(request)
     return {"request_id": result.request_id, "status": result.status.value}
@@ -48,7 +48,7 @@ def decide_request(
     request: PurchaseRequest = Depends(get_request),
     service: RequestService = Depends(get_service),
 ) -> dict:
-    """Krok 3: decyzja przełożonego/Dyrektora (poziom z claimu JWT Entra ID)."""
+    """Step 3: supervisor/Director decision (level from Entra ID JWT claim)."""
     try:
         result = service.decide(request, body.decision, approver_level)
     except PermissionError as exc:

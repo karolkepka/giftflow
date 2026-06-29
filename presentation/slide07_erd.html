@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Model danych — ERD (3NF)</title>
+<title>Data model — ERD (3NF)</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -34,14 +34,14 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-diagram-predecessor"></i></div>
             <div>
-                <div class="case-label">Dział: Inżynieria danych · 1/2</div>
-                <div class="logo-text">Model danych — ERD (3NF)</div>
-                <div class="logo-subtitle">Znormalizowany schemat OLTP w Azure SQL · źródło prawdy dla wniosków, decyzji i audytu</div>
+                <div class="case-label">Department: Data Engineering · 1/2</div>
+                <div class="logo-text">Data model — ERD (3NF)</div>
+                <div class="logo-subtitle">Normalized OLTP schema in Azure SQL · source of truth for requests, decisions, and audit</div>
             </div>
         </div>
         <div class="header-right">
             <span class="section-pill">09 / 18</span>
-            <span class="status-badge"><i class="fas fa-table-cells"></i> 3. postać normalna</span>
+            <span class="status-badge"><i class="fas fa-table-cells"></i> 3rd normal form</span>
             <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
         </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="wrap">
         <div class="erd">
             <svg viewBox="0 0 1200 446" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
-                <title>Diagram ERD w 3. postaci normalnej</title>
+                <title>ERD diagram in third normal form</title>
 
                 <!-- ===== relationships (under boxes) ===== -->
                 <path class="rel" d="M108,100 V148"/>
@@ -162,9 +162,9 @@
         </div>
 
         <div class="legend-row">
-            <span><span class="key-pk">PK</span> klucz główny &nbsp;·&nbsp; <span class="key-fk">FK</span> klucz obcy &nbsp;·&nbsp; <b>1—&#8734;</b> jeden-do-wielu</span>
-            <span><b>self-ref:</b> employee.manager_id &rarr; employee &nbsp;·&nbsp; approval.approver_id &rarr; employee (Dyrektor / przełożony)</span>
-            <span><b>3NF:</b> słowniki (department, gift_type, beneficiary) wydzielone — brak redundancji i anomalii aktualizacji</span>
+            <span><span class="key-pk">PK</span> primary key &nbsp;·&nbsp; <span class="key-fk">FK</span> foreign key &nbsp;·&nbsp; <b>1—&#8734;</b> one-to-many</span>
+            <span><b>self-ref:</b> employee.manager_id &rarr; employee &nbsp;·&nbsp; approval.approver_id &rarr; employee (Director / Supervisor)</span>
+            <span><b>3NF:</b> reference tables (department, gift_type, beneficiary) separated — no redundancy or update anomalies</span>
         </div>
     </div>
     </div>

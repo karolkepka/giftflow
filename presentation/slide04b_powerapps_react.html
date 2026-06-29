@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Warstwa UI — Power Apps vs React</title>
+<title>UI layer — Power Apps vs React</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -42,7 +42,7 @@
     .pc-row.pro i { color: var(--green-bright); } .pc-row.con i { color: #f0907a; }
     .pc-row b { color: #e2e8f0; }
     .fit { margin-top: auto; padding-top: 6px; display: flex; align-items: center; gap: 10px; }
-    .fit-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); width: 86px; flex-shrink: 0; }
+    .fit-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dim); width: 86px; flex-shrink: 0; }
     .fit-track { flex: 1; height: 10px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; }
     .fit-fill { height: 100%; border-radius: 6px; background: var(--accent-grad); }
     .fit-fill.blue { background: linear-gradient(90deg,#7fd1e8,#9ad94f); }
@@ -62,14 +62,14 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-window-maximize"></i></div>
             <div>
-                <div class="case-label">Dział: Analiza biznesowa · warstwa UI</div>
-                <div class="logo-text">Warstwa wejścia — Power Apps vs React</div>
-                <div class="logo-subtitle">Dwa interfejsy nad tym samym backendem FastAPI — wybór wg odbiorcy i skali</div>
+                <div class="case-label">Department: Business Analysis · UI layer</div>
+                <div class="logo-text">Entry layer — Power Apps vs React</div>
+                <div class="logo-subtitle">Two interfaces over the same FastAPI backend — choice by audience and scale</div>
             </div>
         </div>
         <div class="header-right">
             <span class="section-pill">06 / 18</span>
-            <span class="status-badge"><i class="fas fa-plug"></i> Jedno API · dwa UI</span>
+            <span class="status-badge"><i class="fas fa-plug"></i> One API · two UIs</span>
             <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
         </div>
     </div>
@@ -82,23 +82,23 @@
                 <div class="mock">
                     <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-tab">Power Apps · canvas</span></div>
                     <div class="mock-body">
-                        <div class="mock-title">Wniosek o nagrodę</div>
-                        <div class="fld"><label>Cel</label><div class="inp"></div></div>
-                        <div class="fld"><label>Beneficjent</label><div class="inp"></div></div>
-                        <div class="fld"><label>Typ prezentu</label><div class="inp sm"></div></div>
-                        <div class="fld"><label>Kwota (PLN)</label><div class="inp sm"></div></div>
-                        <div class="btn">Wyślij wniosek</div>
+                        <div class="mock-title">Reward request</div>
+                        <div class="fld"><label>Purpose</label><div class="inp"></div></div>
+                        <div class="fld"><label>Beneficiary</label><div class="inp"></div></div>
+                        <div class="fld"><label>Gift type</label><div class="inp sm"></div></div>
+                        <div class="fld"><label>Amount (PLN)</label><div class="inp sm"></div></div>
+                        <div class="btn">Submit request</div>
                     </div>
                 </div>
                 <div class="opt-info">
                     <div class="opt-head"><div class="opt-ic ic-pa"><i class="fas fa-bolt"></i></div><div><div class="opt-kick">Low-code</div><div class="opt-name">Power Apps</div></div></div>
                     <div class="pc">
-                        <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Tygodnie zamiast miesięcy</b> — gotowe formularze i konektory.</span></div>
-                        <div class="pc-row pro"><i class="fas fa-plus"></i><span>Natywne <b>Entra ID</b>, Teams, Forms; citizen developer.</span></div>
-                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Licencje per-user; ograniczony, „pudełkowy" UX.</span></div>
-                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Słabszy CI/CD i testowalność, vendor lock-in.</span></div>
+                        <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Weeks instead of months</b> — ready-made forms and connectors.</span></div>
+                        <div class="pc-row pro"><i class="fas fa-plus"></i><span>Native <b>Entra ID</b>, Teams, Forms; citizen developer.</span></div>
+                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Per-user licenses; limited, boxed UX.</span></div>
+                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Weaker CI/CD and testability, vendor lock-in.</span></div>
                     </div>
-                    <div class="fit"><span class="fit-label">Wdrożenie wewn.</span><div class="fit-track"><div class="fit-fill" style="width:92%"></div></div><span class="fit-pct">92%</span></div>
+                    <div class="fit"><span class="fit-label">Internal rollout</span><div class="fit-track"><div class="fit-fill" style="width:92%"></div></div><span class="fit-pct">92%</span></div>
                 </div>
             </div>
 
@@ -107,33 +107,33 @@
                 <div class="mock">
                     <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-tab">React · giftflow.app</span></div>
                     <div class="mock-body">
-                        <div class="mock-title">Portal wniosków</div>
+                        <div class="mock-title">Request portal</div>
                         <div class="code-mini"><span class="k">const</span> { mutate } = <span class="t">useSubmitRequest</span>()<br><br>
 <span class="k">return</span> (<br>
 &nbsp;&nbsp;&lt;<span class="t">Form</span> onSubmit={mutate}&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="t">AmountField</span> max={limit} /&gt;<br>
 &nbsp;&nbsp;&lt;/<span class="t">Form</span>&gt;<br>
 )</div>
-                        <div class="fld"><label>Kwota (PLN)</label><div class="inp sm"></div></div>
-                        <div class="btn">Złóż wniosek</div>
+                        <div class="fld"><label>Amount (PLN)</label><div class="inp sm"></div></div>
+                        <div class="btn">Submit request</div>
                     </div>
                 </div>
                 <div class="opt-info">
                     <div class="opt-head"><div class="opt-ic ic-re"><i class="fab fa-react"></i></div><div><div class="opt-kick">Pro-code</div><div class="opt-name">React</div></div></div>
                     <div class="pc">
-                        <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Pełna kontrola UX</b> — dowolny design, walidacja, dostępność.</span></div>
-                        <div class="pc-row pro"><i class="fas fa-plus"></i><span>Skala i <b>portal zewnętrzny</b>; testy, CI/CD, brak licencji per-user.</span></div>
-                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Dłuższy time-to-market, własny hosting (Static Web Apps).</span></div>
-                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Wymaga zespołu front-end do utrzymania.</span></div>
+                        <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Full UX control</b> — any design, validation, accessibility.</span></div>
+                        <div class="pc-row pro"><i class="fas fa-plus"></i><span>Scale and <b>external portal</b>; tests, CI/CD, no per-user licenses.</span></div>
+                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Longer time-to-market, own hosting (Static Web Apps).</span></div>
+                        <div class="pc-row con"><i class="fas fa-minus"></i><span>Requires a front-end team for maintenance.</span></div>
                     </div>
-                    <div class="fit"><span class="fit-label">UX / skala</span><div class="fit-track"><div class="fit-fill blue" style="width:90%"></div></div><span class="fit-pct">90%</span></div>
+                    <div class="fit"><span class="fit-label">UX / scale</span><div class="fit-track"><div class="fit-fill blue" style="width:90%"></div></div><span class="fit-pct">90%</span></div>
                 </div>
             </div>
         </div>
 
         <div class="reco">
             <i class="fas fa-code-merge"></i>
-            <p><strong>Rekomendacja:</strong> oba UI wołają to samo <strong>FastAPI</strong> (reguła progu, RBAC i audyt po stronie backendu). Start na <strong>Power Apps / Forms</strong> dla szybkiego wdrożenia wewnętrznego; <strong>React</strong> (Azure Static Web Apps) gdy potrzebny bogaty UX, portal zewnętrzny lub większa skala — bez zmian w logice.</p>
+            <p><strong>Recommendation:</strong> both UIs call the same <strong>FastAPI</strong> (threshold rule, RBAC, and audit on the backend). Start with <strong>Power Apps / Forms</strong> for fast internal rollout; <strong>React</strong> (Azure Static Web Apps) when rich UX, an external portal, or greater scale is needed — without changing the logic.</p>
         </div>
     </div>
     </div>

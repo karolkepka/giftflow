@@ -5,10 +5,10 @@ from app.utils.Logger import Logger
 
 
 class RequestRepository:
-    """Dostęp do Azure SQL (model 3NF).
+    """Azure SQL access (3NF model).
 
-    Połączenie uwierzytelniane przez Managed Identity — brak haseł w kodzie;
-    parametry połączenia czytane z Key Vault.
+    Connection authenticated via Managed Identity — no passwords in code;
+    connection parameters read from Key Vault.
     """
 
     def __init__(self, connection):
@@ -19,7 +19,7 @@ class RequestRepository:
         }
 
     def save(self, request: PurchaseRequest) -> int:
-        self.log.info("Zapis wniosku: %s", request.purpose)
+        self.log.info("Saving request: %s", request.purpose)
         cursor = self.conn.cursor()
         cursor.execute(
             f"INSERT INTO {self.config['TABLE']} "
@@ -61,7 +61,7 @@ class RequestRepository:
         )
 
     def update_status(self, request_id: int, status: RequestStatus) -> None:
-        self.log.info("Aktualizacja statusu wniosku %s -> %s", request_id, status.value)
+        self.log.info("Updating request %s status -> %s", request_id, status.value)
         cursor = self.conn.cursor()
         cursor.execute(
             f"UPDATE {self.config['TABLE']} "

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Kod — FastAPI / Python (OOP)</title>
+<title>Code — FastAPI / Python (OOP)</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -36,9 +36,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fab fa-python"></i></div>
             <div>
-                <div class="case-label">Dział: Implementacja · 1/2</div>
-                <div class="logo-text">Kod — FastAPI / Python (OOP)</div>
-                <div class="logo-subtitle">Czytelny podział na klasy wg zastosowania · jedna klasa = jeden plik</div>
+                <div class="case-label">Department: Implementation · 1/2</div>
+                <div class="logo-text">Code — FastAPI / Python (OOP)</div>
+                <div class="logo-subtitle">Clear class split by purpose · one class = one file</div>
             </div>
         </div>
         <div class="header-right">
@@ -51,7 +51,7 @@
     <div class="grid">
         <div class="col">
             <div>
-                <div class="codecap"><b>domain/ApprovalPolicy.py</b> — deterministyczna reguła progu 1000 PLN</div>
+                <div class="codecap"><b>domain/ApprovalPolicy.py</b> — deterministic 1000 PLN threshold rule</div>
 <pre class="code"><span class="k">class</span> <span class="f">ApprovalPolicy</span>:
     <span class="k">def</span> <span class="f">__init__</span>(self):
         self.log = <span class="f">Logger</span>.get()
@@ -62,11 +62,11 @@
     <span class="k">def</span> <span class="f">evaluate</span>(self, amount: Decimal, currency=<span class="s">"PLN"</span>) -&gt; ApprovalRoute:
         threshold = self.config[<span class="s">"THRESHOLD_PLN"</span>]
         <span class="k">if</span> amount &gt; threshold:                       <span class="c"># &gt; 1000 PLN</span>
-            <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.DIRECTOR, <span class="k">False</span>, <span class="s">"Dyrektor"</span>)
-        <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.AUTO, <span class="k">True</span>, <span class="s">"auto/przełożony"</span>)</pre>
+            <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.DIRECTOR, <span class="k">False</span>, <span class="s">"Director"</span>)
+        <span class="k">return</span> <span class="f">ApprovalRoute</span>(ApprovalLevel.AUTO, <span class="k">True</span>, <span class="s">"auto/Supervisor"</span>)</pre>
             </div>
             <div>
-                <div class="codecap"><b>services/RequestService.py</b> — orkiestracja przepływu (kroki 1–5)</div>
+                <div class="codecap"><b>services/RequestService.py</b> — workflow orchestration (steps 1–5)</div>
 <pre class="code small"><span class="k">class</span> <span class="f">RequestService</span>:
     <span class="k">def</span> <span class="f">submit</span>(self, request: PurchaseRequest) -&gt; PurchaseRequest:
         route = self.policy.evaluate(request.amount, request.currency)
@@ -77,27 +77,27 @@
         self.notifier.publish(<span class="s">"ApprovalRequired"</span>, {...})       <span class="c"># Service Bus</span>
         <span class="k">return</span> request</pre>
             </div>
-            <div class="testbar"><i class="fas fa-circle-check"></i><span><b>pytest</b> — reguła progu zweryfikowana: 250 zł &rarr; AUTO · 1000 zł &rarr; AUTO · 1000,01 zł &rarr; DIRECTOR · EUR &rarr; błąd</span></div>
+            <div class="testbar"><i class="fas fa-circle-check"></i><span><b>pytest</b> — threshold rule verified: 250 PLN &rarr; AUTO · 1000 PLN &rarr; AUTO · 1000.01 PLN &rarr; DIRECTOR · EUR &rarr; error</span></div>
         </div>
 
         <div class="col">
-            <div class="panel-head"><i class="fas fa-cubes"></i> Podział na klasy (wg zastosowania)</div>
+            <div class="panel-head"><i class="fas fa-cubes"></i> Class breakdown (by purpose)</div>
             <div class="classlist">
-                <div class="clrow"><span class="clname">PurchaseRequest</span><span class="cldesc">encja + enumy stanu</span></div>
-                <div class="clrow"><span class="clname">ApprovalPolicy</span><span class="cldesc">reguła progu 1000 PLN</span></div>
-                <div class="clrow"><span class="clname">RequestService</span><span class="cldesc">orkiestracja przepływu</span></div>
+                <div class="clrow"><span class="clname">PurchaseRequest</span><span class="cldesc">entity + state enums</span></div>
+                <div class="clrow"><span class="clname">ApprovalPolicy</span><span class="cldesc">1000 PLN threshold rule</span></div>
+                <div class="clrow"><span class="clname">RequestService</span><span class="cldesc">workflow orchestration</span></div>
                 <div class="clrow"><span class="clname">RequestRepository</span><span class="cldesc">Azure SQL (3NF)</span></div>
                 <div class="clrow"><span class="clname">NotificationService</span><span class="cldesc">Service Bus + feedback</span></div>
-                <div class="clrow"><span class="clname">AuditArchive</span><span class="cldesc">Blob WORM (audyt)</span></div>
+                <div class="clrow"><span class="clname">AuditArchive</span><span class="cldesc">Blob WORM (audit)</span></div>
                 <div class="clrow"><span class="clname">Logger</span><span class="cldesc">Logger.get()</span></div>
             </div>
-            <div class="panel-head" style="margin-top:6px"><i class="fas fa-list-check"></i> Konwencje (wzorzec projektu)</div>
+            <div class="panel-head" style="margin-top:6px"><i class="fas fa-list-check"></i> Conventions (project pattern)</div>
             <ul class="conv">
-                <li><b>Jedna klasa = jeden plik</b> (PascalCase), jasna odpowiedzialność.</li>
-                <li><b>Logger.get()</b> + <b>self.config = {os.getenv(...)}</b> w konstruktorze.</li>
-                <li>Type hints i docstrings; metody prywatne z prefiksem <b>_</b>.</li>
-                <li>Domena <b>niezależna od SDK</b> chmury &rarr; testowalność (DI/mocki).</li>
-                <li><b>Zero sekretów</b> w kodzie — Managed Identity + Key Vault.</li>
+                <li><b>One class = one file</b> (PascalCase), clear responsibility.</li>
+                <li><b>Logger.get()</b> + <b>self.config = {os.getenv(...)}</b> in constructor.</li>
+                <li>Type hints and docstrings; private methods with <b>_</b> prefix.</li>
+                <li>Domain <b>independent of cloud SDK</b> &rarr; testability (DI/mocks).</li>
+                <li><b>Zero secrets</b> in code — Managed Identity + Key Vault.</li>
             </ul>
         </div>
     </div>

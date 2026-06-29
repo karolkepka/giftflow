@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Koszty i optymalizacja (FinOps)</title>
+<title>Cost and optimization (FinOps)</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -39,9 +39,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-coins"></i></div>
             <div>
-                <div class="case-label">Dział: Koszty &amp; FinOps</div>
-                <div class="logo-text">Koszty i optymalizacja kosztowa</div>
-                <div class="logo-subtitle">Model konsumpcyjny (pay-per-use) · szacunek dla ~1000 wniosków / miesiąc</div>
+                <div class="case-label">Department: Cost &amp; FinOps</div>
+                <div class="logo-text">Cost and cost optimization</div>
+                <div class="logo-subtitle">Consumption model (pay-per-use) · estimate for ~1000 requests / month</div>
             </div>
         </div>
         <div class="header-right">
@@ -54,24 +54,24 @@
     <div class="s-body">
     <div class="grid">
         <div class="col">
-            <div class="panel-head"><i class="fas fa-receipt"></i> Szacunkowy koszt miesięczny (orientacyjnie, PLN)</div>
+            <div class="panel-head"><i class="fas fa-receipt"></i> Estimated monthly cost (approximate, PLN)</div>
             <div class="cost-row"><span class="cost-name"><i class="fas fa-bolt"></i> Azure Functions</span><div class="cost-track"><div class="cost-fill" style="width:8%"></div></div><span class="cost-val">~0–20</span></div>
             <div class="cost-row"><span class="cost-name"><i class="fas fa-database"></i> Azure SQL (serverless)</span><div class="cost-track"><div class="cost-fill" style="width:30%"></div></div><span class="cost-val">~80–130</span></div>
             <div class="cost-row"><span class="cost-name"><i class="fas fa-envelopes-bulk"></i> Service Bus</span><div class="cost-track"><div class="cost-fill" style="width:14%"></div></div><span class="cost-val">~30–50</span></div>
-            <div class="cost-row"><span class="cost-name"><i class="fas fa-box-archive"></i> Blob + WORM archiwum</span><div class="cost-track"><div class="cost-fill" style="width:9%"></div></div><span class="cost-val">~10–30</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-box-archive"></i> Blob + WORM archive</span><div class="cost-track"><div class="cost-fill" style="width:9%"></div></div><span class="cost-val">~10–30</span></div>
             <div class="cost-row"><span class="cost-name"><i class="fas fa-network-wired"></i> API Management (Consumption)</span><div class="cost-track"><div class="cost-fill" style="width:12%"></div></div><span class="cost-val">~20–40</span></div>
-            <div class="cost-row"><span class="cost-name"><i class="fas fa-chart-pie"></i> Power BI Pro (5 odbiorców)</span><div class="cost-track"><div class="cost-fill amber" style="width:55%"></div></div><span class="cost-val">~225</span></div>
+            <div class="cost-row"><span class="cost-name"><i class="fas fa-chart-pie"></i> Power BI Pro (5 recipients)</span><div class="cost-track"><div class="cost-fill amber" style="width:55%"></div></div><span class="cost-val">~225</span></div>
             <div class="cost-row"><span class="cost-name"><i class="fas fa-shield-halved"></i> Key Vault · App Insights · e-mail</span><div class="cost-track"><div class="cost-fill" style="width:7%"></div></div><span class="cost-val">~10–25</span></div>
             <div class="total">
-                <span class="t-lab">Razem (low–medium): <b>~400–520 PLN / mies.</b></span>
-                <span class="t-val">&asymp; 0,45 zł<small>/wniosek</small></span>
+                <span class="t-lab">Total (low–medium): <b>~400–520 PLN / month</b></span>
+                <span class="t-val">&asymp; 0.45 PLN<small>/request</small></span>
             </div>
         </div>
 
         <div class="col">
-            <div class="panel-head"><i class="fas fa-sliders"></i> Dźwignie optymalizacji</div>
+            <div class="panel-head"><i class="fas fa-sliders"></i> Optimization levers</div>
             <div class="levers">
-                <div class="lev"><i class="fas fa-power-off"></i><div><h6>Scale-to-zero</h6><p>Functions płatne za wywołania; SQL serverless z auto-pause poza godzinami pracy.</p></div></div>
+                <div class="lev"><i class="fas fa-power-off"></i><div><h6>Scale-to-zero</h6><p>Functions billed per invocation; SQL serverless with auto-pause outside business hours.</p></div></div>
             </div>
         </div>
     </div>

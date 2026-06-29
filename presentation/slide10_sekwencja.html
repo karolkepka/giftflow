@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Diagram sekwencji — proces akceptacji</title>
+<title>Sequence diagram — approval process</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -26,6 +26,9 @@
     .alttab-t { font-family:'Montserrat',sans-serif; font-size: 9px; font-weight: 800; fill: #16210a; }
     .guard { font-family:'JetBrains Mono',monospace; font-size: 9px; fill: #9ad94f; }
     .guard-d { font-family:'JetBrains Mono',monospace; font-size: 9px; fill: #f0b870; }
+    .legend-row { display: flex; align-items: center; justify-content: center; gap: 20px; flex-shrink: 0; font-size: 10.5px; color: var(--muted); }
+    .legend-row b { color: #e2e8f0; }
+    .lg { display: inline-flex; align-items: center; gap: 6px; }
 </style>
 <link href="slides-rwd.css" rel="stylesheet">
 </head>
@@ -37,9 +40,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-arrow-right-arrow-left"></i></div>
             <div>
-                <div class="case-label">Dział: Procesy &amp; przepływy · 2/2</div>
-                <div class="logo-text">Diagram sekwencji — proces akceptacji</div>
-                <div class="logo-subtitle">Rozgałęzienie alt na progu 1000 PLN · powiadomienie zwrotne · niezmienny audyt</div>
+                <div class="case-label">Department: Processes &amp; flows · 2/2</div>
+                <div class="logo-text">Sequence diagram — approval process</div>
+                <div class="logo-subtitle">Alt branch at 1000 PLN threshold · feedback notification · immutable audit</div>
             </div>
         </div>
         <div class="header-right">
@@ -53,7 +56,7 @@
     <div class="wrap">
         <div class="seq">
             <svg viewBox="0 0 1200 452" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">
-                <title>Diagram sekwencji procesu akceptacji wniosku</title>
+                <title>Sequence diagram of request approval process</title>
                 <defs>
                     <marker id="m" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#7eba42"/></marker>
                     <marker id="md" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#f0b870"/></marker>
@@ -73,21 +76,21 @@
                 <rect class="actbar" x="294" y="66" width="12" height="360" rx="2"/>
 
                 <!-- headers -->
-                <g class="ll-box"><rect x="30" y="14" width="120" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="90" y="33" text-anchor="middle">Pracownik (UI)</text></g>
+                <g class="ll-box"><rect x="30" y="14" width="120" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="90" y="33" text-anchor="middle">Employee (UI)</text></g>
                 <g class="ll-box"><rect x="238" y="14" width="124" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="300" y="33" text-anchor="middle">API · FastAPI</text></g>
                 <g class="ll-box"><rect x="412" y="14" width="116" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="470" y="33" text-anchor="middle">Azure SQL</text></g>
                 <g class="ll-box"><rect x="582" y="14" width="116" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="640" y="33" text-anchor="middle">Service Bus</text></g>
-                <g class="ll-box"><rect x="752" y="14" width="116" height="30" rx="6" fill="#f0b870"/><text class="ll-title" x="810" y="33" text-anchor="middle">Dyrektor</text></g>
+                <g class="ll-box"><rect x="752" y="14" width="116" height="30" rx="6" fill="#f0b870"/><text class="ll-title" x="810" y="33" text-anchor="middle">Director</text></g>
                 <g class="ll-box"><rect x="922" y="14" width="116" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="980" y="33" text-anchor="middle">Notifier</text></g>
-                <g class="ll-box"><rect x="1072" y="14" width="116" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="1130" y="33" text-anchor="middle">Archiwum</text></g>
+                <g class="ll-box"><rect x="1072" y="14" width="116" height="30" rx="6" fill="#9ad94f"/><text class="ll-title" x="1130" y="33" text-anchor="middle">Archive</text></g>
 
                 <!-- 1. request -->
-                <text class="mlabel" x="96" y="62">POST /requests {cel, beneficjent, kwota}</text>
+                <text class="mlabel" x="96" y="62">POST /requests {purpose, beneficiary, amount}</text>
                 <path class="msg" d="M90,66 H294" marker-end="url(#m)"/>
 
                 <!-- 2. self validate -->
                 <path class="msg" d="M306,84 H346 V96 H308" marker-end="url(#m)"/>
-                <text class="mlabel" x="350" y="90">walidacja + ApprovalPolicy.evaluate(kwota)</text>
+                <text class="mlabel" x="350" y="90">validation + ApprovalPolicy.evaluate(amount)</text>
 
                 <!-- 3. insert pending -->
                 <text class="mlabel" x="312" y="116">INSERT request (PENDING)</text>
@@ -97,7 +100,7 @@
                 <rect class="altframe" x="250" y="134" width="640" height="218"/>
                 <path class="alttab" d="M250,134 h40 v14 l-8,8 H250 Z"/>
                 <text class="alttab-t" x="258" y="149">alt</text>
-                <text class="guard" x="296" y="148">[kwota &le; 1000 PLN — auto / przełożony]</text>
+                <text class="guard" x="296" y="148">[amount &le; 1000 PLN — auto / Supervisor]</text>
 
                 <!-- branch A -->
                 <text class="mlabel" x="312" y="170">UPDATE status = APPROVED</text>
@@ -107,12 +110,12 @@
 
                 <!-- divider -->
                 <line x1="250" y1="216" x2="890" y2="216" stroke="rgba(240,184,112,0.5)" stroke-dasharray="5 4"/>
-                <text class="guard-d" x="296" y="230">[kwota &gt; 1000 PLN — bezwzględna akceptacja Dyrektora]</text>
+                <text class="guard-d" x="296" y="230">[amount &gt; 1000 PLN — mandatory Director approval]</text>
 
                 <!-- branch B -->
                 <text class="mlabel-d" x="312" y="250">publish ApprovalRequired</text>
                 <path class="msg-amber" d="M306,254 H640" marker-end="url(#md)"/>
-                <text class="mlabel-d" x="646" y="276">zadanie akceptacji (Teams / e-mail)</text>
+                <text class="mlabel-d" x="646" y="276">approval task (Teams / e-mail)</text>
                 <path class="msg-amber" d="M640,280 H810" marker-end="url(#md)"/>
                 <text class="mlabel-d" x="318" y="302">POST /requests/{id}/decision</text>
                 <path class="msg-amber" d="M810,306 H308" marker-end="url(#md)"/>
@@ -124,7 +127,7 @@
                 <!-- after alt: notify -->
                 <text class="mlabel" x="646" y="372">RequestDecided</text>
                 <path class="msg-async" d="M640,376 H980" marker-end="url(#ma)"/>
-                <text class="mlabel" x="600" y="398">powiadomienie zwrotne (wynik decyzji)</text>
+                <text class="mlabel" x="600" y="398">feedback notification (decision result)</text>
                 <path class="msg-async" d="M980,402 H90" marker-end="url(#ma)"/>
 
                 <!-- audit append -->
@@ -134,9 +137,9 @@
         </div>
 
         <div class="legend-row">
-            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px solid #7eba42"></span> <b>wywołanie synchroniczne</b></span>
-            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px solid #f0b870"></span> <b>ścieżka eskalacji</b> (Dyrektor)</span>
-            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px dashed #7fd1e8"></span> <b>zdarzenie asynchroniczne</b></span>
+            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px solid #7eba42"></span> <b>synchronous call</b></span>
+            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px solid #f0b870"></span> <b>escalation path</b> (Director)</span>
+            <span class="lg"><span style="display:inline-block;width:22px;height:0;border-top:2px dashed #7fd1e8"></span> <b>asynchronous event</b></span>
         </div>
     </div>
     </div>

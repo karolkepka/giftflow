@@ -10,34 +10,34 @@ log = Logger.get()
 
 
 def get_service() -> RequestService:
-    """Buduje RequestService z zależnościami chmurowymi.
+    """Builds RequestService with cloud dependencies.
 
-    W środowisku Azure połączenia (SQL, Service Bus, Blob) są tworzone z
-    ``DefaultAzureCredential`` (Managed Identity) — bez sekretów w kodzie.
-    Tu zostawiamy punkt wstrzyknięcia (DI), aby logikę dało się testować lokalnie.
+    In Azure, connections (SQL, Service Bus, Blob) are created with
+    ``DefaultAzureCredential`` (Managed Identity) — no secrets in code.
+    This DI hook keeps domain logic testable locally.
     """
-    from app.infra.factory import build_request_service  # leniwy import infry chmurowej
+    from app.infra.factory import build_request_service  # lazy cloud infra import
 
     return build_request_service()
 
 
 def get_request(request_id: int, service: RequestService = None) -> PurchaseRequest:
-    """Pobiera wniosek z repozytorium (uproszczone na potrzeby przykładu)."""
+    """Loads request from repository (simplified for this example)."""
     service = service or get_service()
     request = service.repo.get(request_id) if hasattr(service.repo, "get") else None
     if request is None:
-        raise HTTPException(status_code=404, detail="Wniosek nie istnieje.")
+        raise HTTPException(status_code=404, detail="Request not found.")
     return request
 
 
 def require_approver(x_ms_client_roles: str = Header(default="")) -> ApprovalLevel:
-    """Mapuje role z tokenu Entra ID na poziom akceptacji.
+    """Maps Entra ID token roles to approval level.
 
-    Nagłówek pochodzi z walidacji JWT w API Management / Easy Auth.
+    Header comes from JWT validation in API Management / Easy Auth.
     """
     roles = {r.strip() for r in x_ms_client_roles.split(",") if r.strip()}
     if "Director" in roles:
         return ApprovalLevel.DIRECTOR
     if "Manager" in roles:
         return ApprovalLevel.MANAGER
-    raise HTTPException(status_code=403, detail="Brak uprawnień do akceptacji wniosków.")
+    raise HTTPException(status_code=403, detail="Insufficient permissions to approve requests.")

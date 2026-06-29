@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Kod weryfikacyjny — Terraform (IaC) &amp; SQL</title>
+<title>Verification code — Terraform (IaC) &amp; SQL</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -28,9 +28,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-cubes-stacked"></i></div>
             <div>
-                <div class="case-label">Dział: Implementacja · 2/2</div>
-                <div class="logo-text">Kod weryfikacyjny — Terraform (IaC) &amp; SQL</div>
-                <div class="logo-subtitle">Infrastruktura jako kod + reguła progu wymuszona także w warstwie danych</div>
+                <div class="case-label">Department: Implementation · 2/2</div>
+                <div class="logo-text">Verification code — Terraform (IaC) &amp; SQL</div>
+                <div class="logo-subtitle">Infrastructure as code + threshold rule enforced at the data layer too</div>
             </div>
         </div>
         <div class="header-right">
@@ -43,8 +43,8 @@
     <div class="s-body">
     <div class="grid">
         <div class="col">
-            <div class="codecap"><i class="fas fa-layer-group"></i> <b>infra/main.tf</b> — kluczowe zasoby serverless</div>
-<pre class="code"><span class="c"># SQL serverless z auto-pause (koszt = konsumpcja)</span>
+            <div class="codecap"><i class="fas fa-layer-group"></i> <b>infra/main.tf</b> — key serverless resources</div>
+<pre class="code"><span class="c"># SQL serverless with auto-pause (cost = consumption)</span>
 <span class="k">resource</span> <span class="s">"azurerm_mssql_database"</span> <span class="s">"db"</span> {
   name                        = <span class="s">"giftflow"</span>
   server_id                   = azurerm_mssql_server.srv.id
@@ -53,7 +53,7 @@
   min_capacity                = <span class="n">0.5</span>
 }
 
-<span class="c"># Function App z Managed Identity — brak sekretów</span>
+<span class="c"># Function App with Managed Identity — no secrets</span>
 <span class="k">resource</span> <span class="s">"azurerm_linux_function_app"</span> <span class="s">"api"</span> {
   name = <span class="s">"giftflow-api"</span>
   <span class="k">identity</span> { type = <span class="s">"SystemAssigned"</span> }
@@ -63,11 +63,11 @@
   name = <span class="s">"giftflow-bus"</span>
   sku  = <span class="s">"Standard"</span>
 }</pre>
-            <div class="note"><i class="fas fa-circle-info"></i><span><b>Idempotentny deploy</b> (Terraform) + CI/CD: środowiska dev/test/prod z jednego modułu, parametryzowane per środowisko.</span></div>
+            <div class="note"><i class="fas fa-circle-info"></i><span><b>Idempotent deploy</b> (Terraform) + CI/CD: dev/test/prod environments from one module, parameterized per environment.</span></div>
         </div>
 
         <div class="col">
-            <div class="codecap"><i class="fas fa-table"></i> <b>schema.sql</b> — tabela 3NF + reguła progu (CHECK / kolumna wyliczana)</div>
+            <div class="codecap"><i class="fas fa-table"></i> <b>schema.sql</b> — 3NF table + threshold rule (CHECK / computed column)</div>
 <pre class="code tiny"><span class="k">CREATE TABLE</span> dbo.purchase_request (
   request_id     <span class="k">INT IDENTITY PRIMARY KEY</span>,
   employee_id    <span class="k">INT NOT NULL REFERENCES</span> dbo.employee(employee_id),
@@ -78,10 +78,10 @@
     <span class="k">CHECK</span> (status <span class="k">IN</span> (<span class="s">'PENDING'</span>,<span class="s">'AUTO_APPROVED'</span>,<span class="s">'APPROVED'</span>,<span class="s">'REJECTED'</span>)),
   created_at     <span class="k">DATETIME2 NOT NULL DEFAULT</span> <span class="f">SYSUTCDATETIME</span>()
 );
-<span class="c">-- próg 1000 PLN wymuszony też w danych (defense in depth)</span>
+<span class="c"># 1000 PLN threshold enforced in data too (defense in depth)</span>
 <span class="k">ALTER TABLE</span> dbo.purchase_request <span class="k">ADD</span> requires_director <span class="k">AS</span>
   (<span class="k">CASE WHEN</span> amount &gt; <span class="n">1000</span> <span class="k">THEN</span> 1 <span class="k">ELSE</span> 0 <span class="k">END</span>) <span class="k">PERSISTED</span>;</pre>
-            <div class="codecap"><i class="fas fa-star"></i> <b>fact_spend</b> — widok analityczny (star schema)</div>
+            <div class="codecap"><i class="fas fa-star"></i> <b>fact_spend</b> — analytical view (star schema)</div>
 <pre class="code tiny"><span class="k">CREATE VIEW</span> fact_spend <span class="k">AS</span>
 <span class="k">SELECT</span> r.request_id, e.department_id, g.category,
        <span class="f">CONVERT</span>(date, a.decided_at) <span class="k">AS</span> decision_date, r.amount

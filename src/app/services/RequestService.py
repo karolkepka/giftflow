@@ -9,10 +9,10 @@ from app.utils.Logger import Logger
 
 
 class RequestService:
-    """Orkiestracja przepływu: rejestracja, ruting akceptacji, decyzja, audyt.
+    """Workflow orchestration: registration, approval routing, decision, audit.
 
-    Spina warstwy (policy, repozytorium, powiadomienia, archiwum) — odpowiednik
-    funkcji-handlera, ale w testowalnej formie klasy.
+    Wires layers (policy, repository, notifications, archive) — equivalent to a
+    function handler, but in a testable class form.
     """
 
     def __init__(self, repository, notifier, archive, policy: ApprovalPolicy = None):
@@ -23,20 +23,20 @@ class RequestService:
         self.policy = policy or ApprovalPolicy()
 
     def submit(self, request: PurchaseRequest) -> PurchaseRequest:
-        """Kroki 1–2: rejestruje wniosek i wyznacza ścieżkę akceptacji."""
+        """Steps 1–2: register request and determine approval path."""
         route = self.policy.evaluate(request.amount, request.currency)
         request.request_id = self.repo.save(request)
         self.archive.append("RequestSubmitted", request)
 
         if route.auto_approve:
-            self.log.info("Wniosek %s — automatyczna akceptacja.", request.request_id)
+            self.log.info("Request %s — auto-approved.", request.request_id)
             return self._finalize(request, RequestStatus.AUTO_APPROVED)
 
         self.notifier.publish(
             "ApprovalRequired",
             {"request_id": request.request_id, "required_level": route.required_level.value},
         )
-        self.log.info("Wniosek %s oczekuje na akceptację: %s", request.request_id, route.required_level.value)
+        self.log.info("Request %s awaiting approval: %s", request.request_id, route.required_level.value)
         return request
 
     def decide(
@@ -45,19 +45,19 @@ class RequestService:
         decision: Decision,
         approver_level: ApprovalLevel,
     ) -> PurchaseRequest:
-        """Krok 3: rejestruje decyzję akceptującego i finalizuje wniosek."""
+        """Step 3: record approver decision and finalize request."""
         route = self.policy.evaluate(request.amount, request.currency)
 
-        # Egzekwowanie reguły progu niezależnie od UI — wniosek > progu
-        # wymaga bezwzględnej akceptacji Dyrektora Działu.
+        # Enforce threshold rule independent of UI — requests above threshold
+        # require mandatory Department Director approval.
         if route.required_level == ApprovalLevel.DIRECTOR and approver_level != ApprovalLevel.DIRECTOR:
-            raise PermissionError("Wniosek powyżej progu wymaga akceptacji Dyrektora Działu.")
+            raise PermissionError("Requests above threshold require Department Director approval.")
 
         status = RequestStatus.APPROVED if decision == Decision.APPROVE else RequestStatus.REJECTED
         return self._finalize(request, status)
 
     def _finalize(self, request: PurchaseRequest, status: RequestStatus) -> PurchaseRequest:
-        """Kroki 4–5: zapis statusu, niezmienny audyt, powiadomienie zwrotne."""
+        """Steps 4–5: persist status, immutable audit, feedback notification."""
         request.status = status
         self.repo.update_status(request.request_id, status)
         self.archive.append(status.value, request)

@@ -3,9 +3,9 @@ import os
 
 
 class Logger:
-    """Lekki dostawca loggera — wzorzec współdzielony w całej aplikacji.
+    """Lightweight logger provider — shared pattern across the application.
 
-    Użycie: ``self.log = Logger.get()`` w konstruktorze każdej klasy.
+    Usage: ``self.log = Logger.get()`` in each class constructor.
     """
 
     @staticmethod

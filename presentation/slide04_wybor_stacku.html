@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Wybór stacku technologicznego — uzasadnienie</title>
+<title>Technology stack selection — rationale</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -46,14 +46,14 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-cloud"></i></div>
             <div>
-                <div class="case-label">Dział: Analiza biznesowa · 4/4</div>
-                <div class="logo-text">Wybór stacku — uzasadnienie</div>
-                <div class="logo-subtitle">Opcja A (Microsoft / Azure) vs Opcja B (Google) vs Opcja C (GenAI)</div>
+                <div class="case-label">Department: Business Analysis · 4/4</div>
+                <div class="logo-text">Stack selection — rationale</div>
+                <div class="logo-subtitle">Option A (Microsoft / Azure) vs Option B (Google) vs Option C (GenAI)</div>
             </div>
         </div>
         <div class="header-right">
             <span class="section-pill">05 / 18</span>
-            <span class="status-badge"><i class="fas fa-check-double"></i> Wybór: Azure</span>
+            <span class="status-badge"><i class="fas fa-check-double"></i> Choice: Azure</span>
             <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
         </div>
     </div>
@@ -64,53 +64,53 @@
             <div class="opt opt--pick">
                 <div class="opt-head">
                     <div class="opt-head-l"><div class="opt-ic ic-az"><i class="fab fa-microsoft"></i></div>
-                    <div><div class="opt-kicker">Opcja A</div><div class="opt-name">Microsoft Azure</div></div></div>
-                    <span class="verdict verdict--yes">Wybór</span>
+                    <div><div class="opt-kicker">Option A</div><div class="opt-name">Microsoft Azure</div></div></div>
+                    <span class="verdict verdict--yes">Selected</span>
                 </div>
                 <div class="pc">
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Ekosystem Microsoft 365</b> — Entra ID, Forms, Teams, Power BI już w organizacji.</span></div>
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Serverless</b>: Functions, Service Bus, Azure SQL — koszt = konsumpcja.</span></div>
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>Natywne RBAC + Key Vault dla rozdziału Dyrektor / pracownik.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Kilka usług do skoordynowania (IaC mitiguje złożoność).</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Microsoft 365 ecosystem</b> — Entra ID, Forms, Teams, Power BI already in the organization.</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span><b>Serverless</b>: Functions, Service Bus, Azure SQL — cost = consumption.</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>Native RBAC + Key Vault for Director / employee separation.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Several services to coordinate (IaC mitigates complexity).</span></div>
                 </div>
             </div>
 
             <div class="opt">
                 <div class="opt-head">
                     <div class="opt-head-l"><div class="opt-ic ic-g"><i class="fab fa-google"></i></div>
-                    <div><div class="opt-kicker">Opcja B</div><div class="opt-name">Google Cloud</div></div></div>
-                    <span class="verdict verdict--no">Odrzucone</span>
+                    <div><div class="opt-kicker">Option B</div><div class="opt-name">Google Cloud</div></div></div>
+                    <span class="verdict verdict--no">Rejected</span>
                 </div>
                 <div class="pc">
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>AppSheet + BigQuery — sprawne dla zespołów na Workspace.</span></div>
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>BigQuery to świetna hurtownia analityczna.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span><b>Brak natywnej integracji</b> z Microsoft 365 / Entra ID.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Dodatkowy dostawca tożsamości i governance dla działu IT.</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>AppSheet + BigQuery — effective for Workspace teams.</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>BigQuery is an excellent analytical warehouse.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span><b>No native integration</b> with Microsoft 365 / Entra ID.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Additional identity provider and governance for IT.</span></div>
                 </div>
             </div>
 
             <div class="opt">
                 <div class="opt-head">
                     <div class="opt-head-l"><div class="opt-ic ic-ai"><i class="fas fa-robot"></i></div>
-                    <div><div class="opt-kicker">Opcja C</div><div class="opt-name">GenAI / agenci</div></div></div>
-                    <span class="verdict verdict--no">Jako dodatek</span>
+                    <div><div class="opt-kicker">Option C</div><div class="opt-name">GenAI / agents</div></div></div>
+                    <span class="verdict verdict--no">As add-on</span>
                 </div>
                 <div class="pc">
-                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>Naturalny język do zapytań analitycznych i kategoryzacji.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span><b>Ryzykowny jako rdzeń</b> decyzji finansowych — brak determinizmu.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Reguła 1000 PLN musi być deterministyczna i audytowalna.</span></div>
-                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Halucynacje + koszt tokenów przy prostej regule biznesowej.</span></div>
+                    <div class="pc-row pro"><i class="fas fa-plus"></i><span>Natural language for analytical queries and categorization.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span><b>Risky as the core</b> of financial decisions — no determinism.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span>The 1000 PLN rule must be deterministic and auditable.</span></div>
+                    <div class="pc-row con"><i class="fas fa-minus"></i><span>Hallucinations + token cost for a simple business rule.</span></div>
                 </div>
             </div>
         </div>
 
         <div class="genai">
             <i class="fas fa-wand-magic-sparkles"></i>
-            <span class="genai-lab">GenAI tam, gdzie realnie pomaga:</span>
+            <span class="genai-lab">GenAI where it actually helps:</span>
             <div class="genai-items">
-                <span class="gtag"><i class="fas fa-comments"></i> Copilot „pytaj o wydatki" w Power BI / Fabric</span>
-                <span class="gtag"><i class="fas fa-tags"></i> Auto-kategoryzacja typu prezentu z opisu</span>
-                <span class="gtag"><i class="fas fa-magnifying-glass-chart"></i> Wykrywanie anomalii / dzielenia wniosków</span>
+                <span class="gtag"><i class="fas fa-comments"></i> Copilot "ask about spend" in Power BI / Fabric</span>
+                <span class="gtag"><i class="fas fa-tags"></i> Auto-categorization of gift type from description</span>
+                <span class="gtag"><i class="fas fa-magnifying-glass-chart"></i> Anomaly detection / request splitting</span>
             </div>
         </div>
     </div>

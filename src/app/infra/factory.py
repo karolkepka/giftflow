@@ -10,11 +10,11 @@ log = Logger.get()
 
 
 def build_request_service() -> RequestService:
-    """Składa RequestService z klientów Azure uwierzytelnianych Managed Identity.
+    """Assembles RequestService from Azure clients authenticated via Managed Identity.
 
-    Wszystkie poświadczenia pochodzą z ``DefaultAzureCredential`` + Key Vault —
-    w kodzie nie ma żadnych sekretów. Funkcja jest jedynym miejscem wiążącym
-    logikę domenową z SDK chmury, co ułatwia testy jednostkowe (mocki).
+    All credentials come from ``DefaultAzureCredential`` + Key Vault —
+    no secrets in code. This is the only place binding domain logic to the
+    cloud SDK, which keeps unit tests easy (mocks).
     """
     from azure.identity import DefaultAzureCredential
     from azure.servicebus import ServiceBusClient

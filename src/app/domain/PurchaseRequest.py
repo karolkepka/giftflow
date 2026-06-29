@@ -25,7 +25,7 @@ class Decision(str, Enum):
 
 @dataclass
 class PurchaseRequest:
-    """Wniosek o zakup prezentu/nagrody — encja domenowa (odpowiada tabeli 3NF)."""
+    """Gift/reward purchase request — domain entity (maps to 3NF table)."""
 
     employee_id: int
     beneficiary_id: int

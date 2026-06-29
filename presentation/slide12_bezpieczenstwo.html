@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Bezpieczeństwo i zarządzanie dostępem</title>
+<title>Security and access management</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -39,9 +39,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
             <div>
-                <div class="case-label">Dział: Bezpieczeństwo &amp; dostęp</div>
-                <div class="logo-text">Bezpieczeństwo i zarządzanie dostępem</div>
-                <div class="logo-subtitle">Kto ma dostęp, jak chronimy dane i sekrety — bez nadmiaru warstw</div>
+                <div class="case-label">Department: Security &amp; access</div>
+                <div class="logo-text">Security and access management</div>
+                <div class="logo-subtitle">Who has access, how we protect data and secrets — without excess layers</div>
             </div>
         </div>
         <div class="header-right">
@@ -54,54 +54,54 @@
     <div class="s-body">
     <div class="grid">
         <div class="col">
-            <div class="panel-head"><i class="fas fa-users-gear"></i> Macierz uprawnień (RBAC · grupy Entra ID)</div>
+            <div class="panel-head"><i class="fas fa-users-gear"></i> Permission matrix (RBAC · Entra ID groups)</div>
             <div class="matrix">
-                <div class="mh role-h">Rola</div>
-                <div class="mh">Złóż wniosek</div>
-                <div class="mh">Akcept. &le;1000</div>
-                <div class="mh">Akcept. &gt;1000</div>
-                <div class="mh">Raporty działu</div>
-                <div class="mh">Raporty all</div>
+                <div class="mh role-h">Role</div>
+                <div class="mh">Submit request</div>
+                <div class="mh">Approve &le;1000</div>
+                <div class="mh">Approve &gt;1000</div>
+                <div class="mh">Dept reports</div>
+                <div class="mh">All reports</div>
                 <div class="mh">Admin</div>
 
-                <div class="mrole"><i class="fas fa-user"></i> Pracownik</div>
+                <div class="mrole"><i class="fas fa-user"></i> Employee</div>
                 <div class="cell yes"><i class="fas fa-check"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div>
 
-                <div class="mrole"><i class="fas fa-user-check"></i> Przełożony</div>
+                <div class="mrole"><i class="fas fa-user-check"></i> Supervisor</div>
                 <div class="cell yes"><i class="fas fa-check"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div>
 
-                <div class="mrole dir"><i class="fas fa-user-tie"></i> Dyrektor Działu</div>
+                <div class="mrole dir"><i class="fas fa-user-tie"></i> Department Director</div>
                 <div class="cell yes"><i class="fas fa-check"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div>
 
-                <div class="mrole"><i class="fas fa-chart-line"></i> Kontroling</div>
+                <div class="mrole"><i class="fas fa-chart-line"></i> Controlling</div>
                 <div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell yes"><i class="fas fa-check"></i></div><div class="cell no"><i class="fas fa-minus"></i></div>
 
                 <div class="mrole"><i class="fas fa-screwdriver-wrench"></i> Admin / IT</div>
                 <div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell no"><i class="fas fa-minus"></i></div><div class="cell yes"><i class="fas fa-check"></i></div>
             </div>
             <ul class="blist" style="margin-top:2px">
-                <li><i class="fas fa-user-lock"></i><span><strong>Separacja obowiązków:</strong> wnioskujący nie akceptuje własnego wniosku.</span></li>
+                <li><i class="fas fa-user-lock"></i><span><strong>Separation of duties:</strong> requesters cannot approve their own requests.</span></li>
             </ul>
         </div>
 
         <div class="col">
-            <div class="panel-head"><i class="fas fa-shield-halved"></i> Zastosowane zabezpieczenia</div>
+            <div class="panel-head"><i class="fas fa-shield-halved"></i> Applied safeguards</div>
             <div class="ctrls">
                 <div class="ctrl">
-                    <h4><i class="fas fa-fingerprint"></i> Dostęp</h4>
-                    <ul><li><b>Entra ID</b> — logowanie i role (pracownik / przełożony / dyrektor)</li><li><b>JWT</b> w API Management — każde wywołanie API z tożsamością</li></ul>
+                    <h4><i class="fas fa-fingerprint"></i> Access</h4>
+                    <ul><li><b>Entra ID</b> — login and roles (employee / Supervisor / Director)</li><li><b>JWT</b> in API Management — every API call with identity</li></ul>
                 </div>
                 <div class="ctrl">
-                    <h4><i class="fas fa-vault"></i> Sekrety</h4>
-                    <ul><li><b>Key Vault</b> — klucze i parametry poza kodem</li><li><b>Managed Identity</b> — usługi Azure łączą się bez haseł w repozytorium</li></ul>
+                    <h4><i class="fas fa-vault"></i> Secrets</h4>
+                    <ul><li><b>Key Vault</b> — keys and parameters outside code</li><li><b>Managed Identity</b> — Azure services connect without passwords in the repository</li></ul>
                 </div>
                 <div class="ctrl">
-                    <h4><i class="fas fa-database"></i> Dane</h4>
-                    <ul><li><b>Szyfrowanie</b> SQL i Blob (w spoczynku i w tranzycie)</li><li><b>WORM</b> — niezmienny audyt decyzji w archiwum</li></ul>
+                    <h4><i class="fas fa-database"></i> Data</h4>
+                    <ul><li><b>Encryption</b> SQL and Blob (at rest and in transit)</li><li><b>WORM</b> — immutable audit of decisions in archive</li></ul>
                 </div>
                 <div class="ctrl">
-                    <h4><i class="fas fa-clipboard-check"></i> Nadzór</h4>
-                    <ul><li><b>App Insights</b> — logi i śledzenie żądań API</li><li><b>Reguła progu</b> w backendzie i bazie — niezależnie od UI</li></ul>
+                    <h4><i class="fas fa-clipboard-check"></i> Oversight</h4>
+                    <ul><li><b>App Insights</b> — logs and API request tracing</li><li><b>Threshold rule</b> in backend and database — independent of UI</li></ul>
                 </div>
             </div>
         </div>

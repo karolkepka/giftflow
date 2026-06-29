@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Normalizacja — 3NF vs struktury zdenormalizowane</title>
+<title>Normalization — 3NF vs denormalized structures</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -39,9 +39,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-layer-group"></i></div>
             <div>
-                <div class="case-label">Dział: Inżynieria danych · 2/2</div>
-                <div class="logo-text">Normalizacja vs denormalizacja</div>
-                <div class="logo-subtitle">Właściwa struktura do właściwego zadania: OLTP, analityka i archiwum</div>
+                <div class="case-label">Department: Data Engineering · 2/2</div>
+                <div class="logo-text">Normalization vs denormalization</div>
+                <div class="logo-subtitle">The right structure for the right job: OLTP, analytics, and archive</div>
             </div>
         </div>
         <div class="header-right">
@@ -55,19 +55,19 @@
     <div class="wrap">
         <div class="cols">
             <div class="mcard">
-                <div class="mhead"><div class="mic"><i class="fas fa-table-cells"></i></div><div><div class="mkick">Warstwa operacyjna</div><div class="mname">3NF — Azure SQL</div></div></div>
-                <div class="muse"><i class="fas fa-bolt"></i> Zapisy/odczyt wniosków i decyzji (OLTP)</div>
-                <div class="ex"><span class="t">request</span> &rarr; FK employee, beneficiary, gift_type<br><span class="t">approval</span> &rarr; FK request, approver<br>słowniki bez redundancji</div>
+                <div class="mhead"><div class="mic"><i class="fas fa-table-cells"></i></div><div><div class="mkick">Operational layer</div><div class="mname">3NF — Azure SQL</div></div></div>
+                <div class="muse"><i class="fas fa-bolt"></i> Read/write of requests and decisions (OLTP)</div>
+                <div class="ex"><span class="t">request</span> &rarr; FK employee, beneficiary, gift_type<br><span class="t">approval</span> &rarr; FK request, approver<br>reference tables without redundancy</div>
                 <div class="tradeoff">
-                    <div class="to-row up"><i class="fas fa-plus"></i><span>Integralność, brak anomalii, spójny zapis transakcyjny.</span></div>
-                    <div class="to-row up"><i class="fas fa-plus"></i><span>Łatwe wymuszanie reguł (CHECK, FK, unikalność).</span></div>
-                    <div class="to-row down"><i class="fas fa-minus"></i><span>Wiele JOIN-ów — gorsze dla raportów ad-hoc.</span></div>
+                    <div class="to-row up"><i class="fas fa-plus"></i><span>Integrity, no anomalies, consistent transactional writes.</span></div>
+                    <div class="to-row up"><i class="fas fa-plus"></i><span>Easy rule enforcement (CHECK, FK, uniqueness).</span></div>
+                    <div class="to-row down"><i class="fas fa-minus"></i><span>Many JOINs — worse for ad-hoc reports.</span></div>
                 </div>
             </div>
 
             <div class="mcard">
-                <div class="mhead"><div class="mic"><i class="fas fa-star"></i></div><div><div class="mkick">Warstwa analityczna</div><div class="mname">Star schema — Fabric</div></div></div>
-                <div class="muse"><i class="fas fa-chart-column"></i> Raporty: dział × miesiąc × typ prezentu</div>
+                <div class="mhead"><div class="mic"><i class="fas fa-star"></i></div><div><div class="mkick">Analytical layer</div><div class="mname">Star schema — Fabric</div></div></div>
+                <div class="muse"><i class="fas fa-chart-column"></i> Reports: department × month × gift type</div>
                 <div class="star">
                     <svg viewBox="0 0 240 116" width="100%" height="120" xmlns="http://www.w3.org/2000/svg">
                         <line x1="120" y1="58" x2="40" y2="20" stroke="#7eba42" stroke-width="1.6"/>
@@ -82,19 +82,19 @@
                     </svg>
                 </div>
                 <div class="tradeoff">
-                    <div class="to-row up"><i class="fas fa-plus"></i><span>Szybkie agregacje, prosty dla Power BI / DAX.</span></div>
-                    <div class="to-row down"><i class="fas fa-minus"></i><span>Redundancja w wymiarach (świadoma, kontrolowana).</span></div>
+                    <div class="to-row up"><i class="fas fa-plus"></i><span>Fast aggregations, simple for Power BI / DAX.</span></div>
+                    <div class="to-row down"><i class="fas fa-minus"></i><span>Redundancy in dimensions (deliberate, controlled).</span></div>
                 </div>
             </div>
 
             <div class="mcard">
-                <div class="mhead"><div class="mic"><i class="fas fa-file-code"></i></div><div><div class="mkick">Audyt &amp; archiwum</div><div class="mname">Denormalizacja / JSON</div></div></div>
-                <div class="muse"><i class="fas fa-lock"></i> Niezmienne zdarzenia (append-only, WORM)</div>
-                <div class="ex">{ <span class="t">"event"</span>: "APPROVED",<br>&nbsp; <span class="t">"request"</span>: {...snapshot...},<br>&nbsp; <span class="t">"actor"</span>: "dyrektor@...",<br>&nbsp; <span class="t">"ts"</span>: "2026-06-17T20:10Z" }</div>
+                <div class="mhead"><div class="mic"><i class="fas fa-file-code"></i></div><div><div class="mkick">Audit &amp; archive</div><div class="mname">Denormalization / JSON</div></div></div>
+                <div class="muse"><i class="fas fa-lock"></i> Immutable events (append-only, WORM)</div>
+                <div class="ex">{ <span class="t">"event"</span>: "APPROVED",<br>&nbsp; <span class="t">"request"</span>: {...snapshot...},<br>&nbsp; <span class="t">"actor"</span>: "director@...",<br>&nbsp; <span class="t">"ts"</span>: "2026-06-17T20:10Z" }</div>
                 <div class="tradeoff">
-                    <div class="to-row up"><i class="fas fa-plus"></i><span>Pełny kontekst w 1 dokumencie — niepodważalny ślad.</span></div>
-                    <div class="to-row up"><i class="fas fa-plus"></i><span>Tani zapis (Blob/Cosmos), schema-on-read.</span></div>
-                    <div class="to-row down"><i class="fas fa-minus"></i><span>Brak wymuszania spójności — tylko do odczytu/audytu.</span></div>
+                    <div class="to-row up"><i class="fas fa-plus"></i><span>Full context in one document — indisputable trail.</span></div>
+                    <div class="to-row up"><i class="fas fa-plus"></i><span>Cheap writes (Blob/Cosmos), schema-on-read.</span></div>
+                    <div class="to-row down"><i class="fas fa-minus"></i><span>No consistency enforcement — read/audit only.</span></div>
                 </div>
             </div>
         </div>
@@ -102,9 +102,9 @@
         <div class="reco">
             <i class="fas fa-circle-check"></i>
             <div class="reco-items">
-                <span class="ri"><b>OLTP &rarr; 3NF</b> (Azure SQL): integralność i reguły</span>
-                <span class="ri"><b>BI &rarr; star schema</b> (Fabric): wydajne raporty</span>
-                <span class="ri"><b>Audyt &rarr; JSON append-only</b> (Blob WORM / Cosmos): niezmienność</span>
+                <span class="ri"><b>OLTP &rarr; 3NF</b> (Azure SQL): integrity and rules</span>
+                <span class="ri"><b>BI &rarr; star schema</b> (Fabric): efficient reports</span>
+                <span class="ri"><b>Audit &rarr; JSON append-only</b> (Blob WORM / Cosmos): immutability</span>
             </div>
         </div>
     </div>

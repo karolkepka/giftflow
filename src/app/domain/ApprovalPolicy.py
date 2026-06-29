@@ -8,7 +8,7 @@ from app.utils.Logger import Logger
 
 @dataclass(frozen=True)
 class ApprovalRoute:
-    """Wynik ewaluacji reguły progu — wymagany poziom akceptacji."""
+    """Result of threshold rule evaluation — required approval level."""
 
     required_level: ApprovalLevel
     auto_approve: bool
@@ -16,10 +16,10 @@ class ApprovalRoute:
 
 
 class ApprovalPolicy:
-    """Deterministyczna reguła progu akceptacji (domyślnie 1000 PLN).
+    """Deterministic approval threshold rule (default 1000 PLN).
 
-    Próg jest konfigurowalny zmienną środowiskową, ale sama decyzja pozostaje
-    w pełni deterministyczna i audytowalna — celowo bez GenAI w torze decyzyjnym.
+    The threshold is configurable via environment variable, but the decision
+    remains fully deterministic and auditable — intentionally no GenAI on the decision path.
     """
 
     def __init__(self):
@@ -30,19 +30,19 @@ class ApprovalPolicy:
         }
 
     def evaluate(self, amount: Decimal, currency: str = "PLN") -> ApprovalRoute:
-        """Zwraca wymaganą ścieżkę akceptacji dla danej kwoty wniosku."""
+        """Returns the required approval path for the given request amount."""
         if currency != "PLN":
-            raise ValueError(f"Nieobsługiwana waluta: {currency}")
+            raise ValueError(f"Unsupported currency: {currency}")
         if amount <= 0:
-            raise ValueError("Kwota wniosku musi być dodatnia.")
+            raise ValueError("Request amount must be positive.")
 
         threshold = self.config["THRESHOLD_PLN"]
 
         if amount > threshold:
-            self.log.info("Kwota %s > %s PLN — wymagana akceptacja Dyrektora.", amount, threshold)
-            return ApprovalRoute(ApprovalLevel.DIRECTOR, False, "Powyżej progu — Dyrektor Działu")
+            self.log.info("Amount %s > %s PLN — Director approval required.", amount, threshold)
+            return ApprovalRoute(ApprovalLevel.DIRECTOR, False, "Above threshold — Department Director")
 
         if self.config["AUTO_APPROVE_BELOW_THRESHOLD"]:
-            return ApprovalRoute(ApprovalLevel.AUTO, True, "Na/poniżej progu — automatyczna akceptacja")
+            return ApprovalRoute(ApprovalLevel.AUTO, True, "At/below threshold — auto-approval")
 
-        return ApprovalRoute(ApprovalLevel.MANAGER, False, "Na/poniżej progu — akceptacja przełożonego")
+        return ApprovalRoute(ApprovalLevel.MANAGER, False, "At/below threshold — supervisor approval")

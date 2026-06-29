@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Architektura referencyjna — Azure Serverless</title>
+<title>Reference architecture — Azure Serverless</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -31,9 +31,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-sitemap"></i></div>
             <div>
-                <div class="case-label">Dział: Architektura · 1/2</div>
-                <div class="logo-text">Architektura referencyjna — Azure Serverless</div>
-                <div class="logo-subtitle">Tylko komponenty użyte w rozwiązaniu, pogrupowane w warstwy · provisioning przez Terraform</div>
+                <div class="case-label">Department: Architecture · 1/2</div>
+                <div class="logo-text">Reference architecture — Azure Serverless</div>
+                <div class="logo-subtitle">Only components used in the solution, grouped in layers · provisioning via Terraform</div>
             </div>
         </div>
         <div class="header-right">
@@ -46,7 +46,7 @@
     <div class="s-body">
     <div class="wrap">
         <div class="flowbar">
-            <div class="flow-row" aria-label="Przepływ logiczny">
+            <div class="flow-row" aria-label="Logical flow">
                 <span class="flow-step"><i class="fas fa-pen-to-square"></i> Forms / Power Apps</span>
                 <span class="flow-arrow"><i class="fas fa-chevron-right"></i></span>
                 <span class="flow-step"><i class="fas fa-shield-halved"></i> Entra ID + API Management</span>
@@ -63,7 +63,7 @@
 
         <div class="planes">
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-door-open"></i></div><div class="plane-title">Wejście &amp; tożsamość</div><span class="plane-num">01</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-door-open"></i></div><div class="plane-title">Entry &amp; identity</div><span class="plane-num">01</span></div>
                 <div class="tags">
                     <span class="tag">Power Apps / Forms (UI)</span>
                     <span class="tag">Entra ID (Azure AD)</span>
@@ -71,31 +71,31 @@
                 </div>
             </div>
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-microchip"></i></div><div class="plane-title">Compute &amp; logika</div><span class="plane-num">02</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-microchip"></i></div><div class="plane-title">Compute &amp; logic</div><span class="plane-num">02</span></div>
                 <div class="tags">
                     <span class="tag">Azure Functions (Consumption)</span>
                     <span class="tag">FastAPI / Python (ASGI)</span>
-                    <span class="tag">Reguła progu 1000 PLN</span>
+                    <span class="tag">1000 PLN threshold rule</span>
                 </div>
             </div>
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-network-wired"></i></div><div class="plane-title">Komunikacja &amp; powiadomienia</div><span class="plane-num">03</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-network-wired"></i></div><div class="plane-title">Communication &amp; notifications</div><span class="plane-num">03</span></div>
                 <div class="tags">
                     <span class="tag">Service Bus (topic)</span>
                     <span class="tag">Dead-letter queue</span>
-                    <span class="tag">Powiadomienie e-mail</span>
+                    <span class="tag">E-mail notification</span>
                 </div>
             </div>
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-database"></i></div><div class="plane-title">Dane &amp; archiwum</div><span class="plane-num">04</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-database"></i></div><div class="plane-title">Data &amp; archive</div><span class="plane-num">04</span></div>
                 <div class="tags">
                     <span class="tag">Azure SQL (3NF · OLTP)</span>
-                    <span class="tag">Blob Storage — audyt</span>
+                    <span class="tag">Blob Storage — audit</span>
                     <span class="tag tag--gold">Immutable archive (WORM)</span>
                 </div>
             </div>
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-chart-line"></i></div><div class="plane-title">Analityka &amp; BI</div><span class="plane-num">05</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-chart-line"></i></div><div class="plane-title">Analytics &amp; BI</div><span class="plane-num">05</span></div>
                 <div class="tags">
                     <span class="tag">Microsoft Fabric</span>
                     <span class="tag">fact_spend (star schema)</span>
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="plane">
-                <div class="plane-head"><div class="plane-ic"><i class="fas fa-lock"></i></div><div class="plane-title">Bezpieczeństwo &amp; ops</div><span class="plane-num">06</span></div>
+                <div class="plane-head"><div class="plane-ic"><i class="fas fa-lock"></i></div><div class="plane-title">Security &amp; ops</div><span class="plane-num">06</span></div>
                 <div class="tags">
                     <span class="tag">Key Vault</span>
                     <span class="tag">Managed Identity</span>
@@ -115,7 +115,7 @@
     </div>
     </div>
 
-    <p class="foot-hint"><i class="fas fa-arrow-right"></i> Następny slajd: animowany przepływ danych end-to-end przez powyższe warstwy.</p>
+    <p class="foot-hint"><i class="fas fa-arrow-right"></i> Next slide: animated end-to-end data flow through the layers above.</p>
 </div>
 <div class="bottom-bar"></div>
 </div>

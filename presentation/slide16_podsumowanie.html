@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Podsumowanie i zgodność z wymaganiami</title>
+<title>Summary and requirements compliance</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -37,9 +37,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-flag-checkered"></i></div>
             <div>
-                <div class="case-label">Podsumowanie</div>
-                <div class="logo-text">Zgodność z wymaganiami i atrybuty jakościowe</div>
-                <div class="logo-subtitle">Pełne pokrycie scenariusza · skalowalność · bezpieczeństwo · koszty</div>
+                <div class="case-label">Summary</div>
+                <div class="logo-text">Requirements compliance and quality attributes</div>
+                <div class="logo-subtitle">Full scenario coverage · scalability · security · cost</div>
             </div>
         </div>
         <div class="header-right">
@@ -52,31 +52,31 @@
     <div class="s-body">
     <div class="grid">
         <div class="col">
-            <div class="panel-head"><i class="fas fa-list-check"></i> Pokrycie scenariusza (kroki 1–5)</div>
-            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>1 · Zgłoszenie zapotrzebowania</h6><p>Forms / Power Apps &rarr; <code>POST /requests</code> (cel, beneficjent, kwota).</p></div></div>
-            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>2 · Weryfikacja progu 1000 PLN</h6><p>Deterministyczna <code>ApprovalPolicy</code> &mdash; auto/przełożony lub Dyrektor.</p></div></div>
-            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>3 · Decyzja + automatyczny feedback</h6><p>Service Bus &rarr; powiadomienie zwrotne (e-mail).</p></div></div>
-            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>4 · Bezpieczne archiwum chmurowe</h6><p>Niezmienny audyt JSON w Blob WORM + szyfrowanie.</p></div></div>
-            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>5 · Analityka wydatków</h6><p>Fabric (star schema) + Power BI: dział × miesiąc × typ.</p></div></div>
+            <div class="panel-head"><i class="fas fa-list-check"></i> Scenario coverage (steps 1–5)</div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>1 · Request submission</h6><p>Forms / Power Apps &rarr; <code>POST /requests</code> (purpose, beneficiary, amount).</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>2 · 1000 PLN threshold verification</h6><p>Deterministic <code>ApprovalPolicy</code> &mdash; auto/supervisor or Director.</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>3 · Decision + automatic feedback</h6><p>Service Bus &rarr; feedback notification (e-mail).</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>4 · Secure cloud archive</h6><p>Immutable JSON audit in Blob WORM + encryption.</p></div></div>
+            <div class="req"><span class="ck"><i class="fas fa-check"></i></span><div><h6>5 · Spend analytics</h6><p>Fabric (star schema) + Power BI: department × month × type.</p></div></div>
         </div>
 
         <div class="col">
-            <div class="panel-head"><i class="fas fa-award"></i> Atrybuty jakościowe</div>
+            <div class="panel-head"><i class="fas fa-award"></i> Quality attributes</div>
             <div class="qcards">
-                <div class="qc"><h6><i class="fas fa-arrows-up-down-left-right"></i> Skalowalność</h6><p>Serverless, event-driven, scale-to-zero; rośnie z wolumenem bez przeprojektowania.</p></div>
-                <div class="qc"><h6><i class="fas fa-screwdriver-wrench"></i> Utrzymanie</h6><p>IaC (Terraform), CI/CD, observability; kod OOP testowalny (jedna klasa = plik).</p></div>
-                <div class="qc"><h6><i class="fas fa-shield-halved"></i> Bezpieczeństwo</h6><p>Entra ID RBAC (Dyrektor vs pracownik), Key Vault, WORM, separacja obowiązków.</p></div>
-                <div class="qc"><h6><i class="fas fa-coins"></i> Koszty</h6><p>Pay-per-use, ~0,45 zł/wniosek; dźwignie FinOps i budżety/alerty.</p></div>
+                <div class="qc"><h6><i class="fas fa-arrows-up-down-left-right"></i> Scalability</h6><p>Serverless, event-driven, scale-to-zero; grows with volume without redesign.</p></div>
+                <div class="qc"><h6><i class="fas fa-screwdriver-wrench"></i> Maintainability</h6><p>IaC (Terraform), CI/CD, observability; testable OOP code (one class = file).</p></div>
+                <div class="qc"><h6><i class="fas fa-shield-halved"></i> Security</h6><p>Entra ID RBAC (Director vs employee), Key Vault, WORM, separation of duties.</p></div>
+                <div class="qc"><h6><i class="fas fa-coins"></i> Cost</h6><p>Pay-per-use, ~0.45 PLN/request; FinOps levers and budgets/alerts.</p></div>
             </div>
-            <div class="panel-head" style="margin-top:4px"><i class="fas fa-folder-open"></i> Dostarczone artefakty</div>
+            <div class="panel-head" style="margin-top:4px"><i class="fas fa-folder-open"></i> Delivered artifacts</div>
             <div class="artefacts">
-                <span class="tag">Architektura Azure</span>
+                <span class="tag">Azure architecture</span>
                 <span class="tag">Build vs Buy</span>
                 <span class="tag">ERD 3NF</span>
                 <span class="tag">DFD</span>
-                <span class="tag">Sekwencja</span>
-                <span class="tag">Przepływ animowany</span>
-                <span class="tag">Analityka BI</span>
+                <span class="tag">Sequence</span>
+                <span class="tag">Animated flow</span>
+                <span class="tag">BI analytics</span>
                 <span class="tag">FastAPI (OOP)</span>
                 <span class="tag">Terraform + SQL</span>
             </div>
@@ -86,7 +86,7 @@
 
     <div class="closing">
         <i class="fas fa-lightbulb"></i>
-        <p><b>Rekomendacja:</b> rdzeń pro-code na Azure serverless (FastAPI), 3NF dla integralności + star schema dla analityki, GenAI punktowo (copilot BI, kategoryzacja). Rozwiązanie realizuje cały scenariusz end-to-end, jest skalowalne, bezpieczne i optymalne kosztowo.</p>
+        <p><b>Recommendation:</b> pro-code core on Azure serverless (FastAPI), 3NF for integrity + star schema for analytics, GenAI selectively (BI copilot, categorization). The solution delivers the full scenario end-to-end, is scalable, secure, and cost-optimal.</p>
     </div>
 </div>
 <div class="bottom-bar"></div>

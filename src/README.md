@@ -1,41 +1,38 @@
-# GiftFlow — silnik workflow zakupu prezentów i nagród
+# GiftFlow — gift and reward purchase workflow engine
 
-Referencyjna implementacja rdzenia pro-code dla scenariusza obiegu zakupów
-prezentów/nagród. Backend **FastAPI** uruchamiany serverless na **Azure Functions**,
-dane w **Azure SQL** (3NF), zdarzenia przez **Service Bus**, niezmienne archiwum
-w **Blob (WORM)**.
+Reference pro-code implementation of the core for the gift/reward purchase workflow scenario. **FastAPI** backend running serverless on **Azure Functions**, data in **Azure SQL** (3NF), events via **Service Bus**, immutable archive in **Blob (WORM)**.
 
-## Struktura (OOP — jedna klasa na plik)
+## Structure (OOP — one class per file)
 
 ```
 app/
   api/
     main.py            # FastAPI: POST /requests, POST /requests/{id}/decision
-    dependencies.py    # DI + mapowanie ról Entra ID -> poziom akceptacji
+    dependencies.py    # DI + Entra ID role mapping -> approval level
   domain/
-    PurchaseRequest.py # encja + enumy (status, poziom, decyzja)
-    ApprovalPolicy.py  # deterministyczna reguła progu 1000 PLN
+    PurchaseRequest.py # entity + enums (status, level, decision)
+    ApprovalPolicy.py  # deterministic 1000 PLN threshold rule
   services/
-    RequestService.py      # orkiestracja przepływu (kroki 1-5)
-    NotificationService.py # publikacja zdarzeń + feedback (Service Bus)
-    AuditArchive.py        # niezmienny zapis audytu (Blob WORM)
+    RequestService.py      # workflow orchestration (steps 1-5)
+    NotificationService.py # event publishing + feedback (Service Bus)
+    AuditArchive.py        # immutable audit write (Blob WORM)
   repositories/
     RequestRepository.py   # Azure SQL (Managed Identity)
   infra/
-    factory.py             # wiązanie z SDK Azure (DefaultAzureCredential)
+    factory.py             # Azure SDK binding (DefaultAzureCredential)
   utils/
-    Logger.py              # Logger.get() — współdzielony logger
+    Logger.py              # Logger.get() — shared logger
 tests/
-  test_approval_policy.py  # weryfikacja reguły progu (determinizm)
+  test_approval_policy.py  # threshold rule verification (determinism)
 ```
 
-## Zasady projektowe
+## Design principles
 
-- **Brak sekretów w kodzie** — `DefaultAzureCredential` (Managed Identity) + Key Vault.
-- **Reguła progu deterministyczna i testowalna** — bez GenAI w torze decyzyjnym.
-- **Separacja warstw** — domena niezależna od SDK chmury (łatwe testy i mocki).
+- **No secrets in code** — `DefaultAzureCredential` (Managed Identity) + Key Vault.
+- **Deterministic, testable threshold rule** — no GenAI in the decision path.
+- **Layer separation** — domain independent of cloud SDK (easy tests and mocks).
 
-## Uruchomienie testów
+## Running tests
 
 ```bash
 pip install -r requirements.txt

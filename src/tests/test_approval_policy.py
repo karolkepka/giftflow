@@ -18,7 +18,7 @@ def test_below_threshold_auto_approves(policy):
 
 
 def test_exactly_threshold_is_not_escalated(policy):
-    # 1000 PLN — na progu — nie wymaga Dyrektora (warunek: > 1000).
+    # 1000 PLN — at threshold — does not require Director (condition: > 1000).
     route = policy.evaluate(Decimal("1000.00"))
     assert route.required_level == ApprovalLevel.AUTO
 

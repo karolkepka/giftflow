@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Scenariusz biznesowy i wymagania</title>
+<title>Business scenario and requirements</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -72,14 +72,14 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-clipboard-list"></i></div>
             <div>
-                <div class="case-label">Dział: Analiza biznesowa · 1/4</div>
-                <div class="logo-text">Scenariusz i wymagania</div>
-                <div class="logo-subtitle">Ustrukturyzowany obieg zakupów prezentów oraz nagród dla klientów i pracowników</div>
+                <div class="case-label">Department: Business Analysis · 1/4</div>
+                <div class="logo-text">Scenario and requirements</div>
+                <div class="logo-subtitle">Structured workflow for purchasing gifts and rewards for clients and employees</div>
             </div>
         </div>
         <div class="header-right">
             <span class="section-pill">02 / 18</span>
-            <span class="status-badge"><i class="fas fa-bullseye"></i> Problem &amp; cel</span>
+            <span class="status-badge"><i class="fas fa-bullseye"></i> Problem &amp; goal</span>
             <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
         </div>
     </div>
@@ -87,42 +87,42 @@
     <div class="s-body">
     <div class="body-grid">
         <div class="col">
-            <div class="panel-head"><i class="fas fa-route"></i> Wymagany przepływ (Workflow)</div>
+            <div class="panel-head"><i class="fas fa-route"></i> Required workflow</div>
             <div class="timeline">
-                <div class="tl-step"><div class="tl-num">1</div><div><h4>Zgłoszenie zapotrzebowania</h4><p>Pracownik podaje <strong>cel, beneficjenta, typ prezentu i kwotę</strong>.</p></div></div>
-                <div class="tl-step"><div class="tl-num">2</div><div><h4>Weryfikacja kwoty</h4><p>System klasyfikuje wniosek względem progu <strong>1000 PLN</strong> i wybiera ścieżkę akceptacji.</p></div></div>
-                <div class="tl-step"><div class="tl-num">3</div><div><h4>Decyzja i feedback</h4><p>Akceptacja lub odrzucenie &rarr; <strong>automatyczne powiadomienie</strong> wnioskodawcy.</p></div></div>
-                <div class="tl-step"><div class="tl-num">4</div><div><h4>Archiwizacja</h4><p>Transakcje, decyzje i metadane trafiają do <strong>bezpiecznego archiwum chmurowego</strong>.</p></div></div>
-                <div class="tl-step"><div class="tl-num">5</div><div><h4>Analityka wydatków</h4><p>Raportowanie w rozbiciu na <strong>działy, miesiące i typy prezentów</strong>.</p></div></div>
+                <div class="tl-step"><div class="tl-num">1</div><div><h4>Request submission</h4><p>Employee provides <strong>purpose, beneficiary, gift type, and amount</strong>.</p></div></div>
+                <div class="tl-step"><div class="tl-num">2</div><div><h4>Amount verification</h4><p>System classifies the request against the <strong>1000 PLN</strong> threshold and selects the approval path.</p></div></div>
+                <div class="tl-step"><div class="tl-num">3</div><div><h4>Decision and feedback</h4><p>Approval or rejection &rarr; <strong>automatic notification</strong> to the requester.</p></div></div>
+                <div class="tl-step"><div class="tl-num">4</div><div><h4>Archiving</h4><p>Transactions, decisions, and metadata go to a <strong>secure cloud archive</strong>.</p></div></div>
+                <div class="tl-step"><div class="tl-num">5</div><div><h4>Spend analytics</h4><p>Reporting by <strong>department, month, and gift type</strong>.</p></div></div>
             </div>
         </div>
 
         <div class="col">
             <div class="gate">
-                <div class="gate-title"><i class="fas fa-scale-balanced"></i> Reguła progu akceptacji</div>
+                <div class="gate-title"><i class="fas fa-scale-balanced"></i> Approval threshold rule</div>
                 <div class="gate-flow">
-                    <div class="gate-input"><i class="fas fa-coins"></i><span>Kwota<br>wniosku</span></div>
+                    <div class="gate-input"><i class="fas fa-coins"></i><span>Request<br>amount</span></div>
                     <div class="gate-branches">
-                        <div class="branch branch--low"><i class="fas fa-circle-check lead-ic"></i><span><b>&le; 1000 PLN</b> — auto-akceptacja / akceptacja bezpośredniego przełożonego</span></div>
-                        <div class="branch branch--high"><i class="fas fa-user-tie lead-ic"></i><span><b>&gt; 1000 PLN</b> — bezwzględna akceptacja <b>Dyrektora Działu</b></span></div>
+                        <div class="branch branch--low"><i class="fas fa-circle-check lead-ic"></i><span><b>&le; 1000 PLN</b> — auto-approval / direct supervisor approval</span></div>
+                        <div class="branch branch--high"><i class="fas fa-user-tie lead-ic"></i><span><b>&gt; 1000 PLN</b> — mandatory <b>Department Director</b> approval</span></div>
                     </div>
                 </div>
             </div>
 
             <div class="crit-wrap">
-                <div class="panel-head"><i class="fas fa-circle-check"></i> Kryteria oceny — adresowane w decku</div>
+                <div class="panel-head"><i class="fas fa-circle-check"></i> Evaluation criteria — addressed in this deck</div>
                 <div class="crit-grid">
-                    <div class="crit"><h5><i class="fas fa-bullseye"></i> Dopasowanie</h5><p>Pełne pokrycie 5 kroków scenariusza.</p></div>
-                    <div class="crit"><h5><i class="fas fa-arrows-up-down-left-right"></i> Skalowalność</h5><p>Serverless, niski koszt utrzymania.</p></div>
-                    <div class="crit"><h5><i class="fas fa-shield-halved"></i> Bezpieczeństwo</h5><p>RBAC: Dyrektor vs pracownik.</p></div>
-                    <div class="crit"><h5><i class="fas fa-coins"></i> Koszty</h5><p>Model konsumpcyjny, FinOps.</p></div>
+                    <div class="crit"><h5><i class="fas fa-bullseye"></i> Fit</h5><p>Full coverage of the 5-step scenario.</p></div>
+                    <div class="crit"><h5><i class="fas fa-arrows-up-down-left-right"></i> Scalability</h5><p>Serverless, low maintenance cost.</p></div>
+                    <div class="crit"><h5><i class="fas fa-shield-halved"></i> Security</h5><p>RBAC: Director vs employee.</p></div>
+                    <div class="crit"><h5><i class="fas fa-coins"></i> Cost</h5><p>Consumption model, FinOps.</p></div>
                 </div>
             </div>
         </div>
     </div>
     </div>
 
-    <p class="foot-hint"><i class="fas fa-arrow-right"></i> Następny slajd: założenia projektowe — zakres wymagań i kontekst organizacji IT.</p>
+    <p class="foot-hint"><i class="fas fa-arrow-right"></i> Next slide: design assumptions — requirements scope and IT context.</p>
 </div>
 <div class="bottom-bar"></div>
 </div>

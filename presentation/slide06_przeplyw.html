@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Animowany przepływ danych end-to-end</title>
+<title>Animated end-to-end data flow</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -49,9 +49,9 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-diagram-project"></i></div>
             <div>
-                <div class="case-label">Dział: Architektura · 2/2</div>
-                <div class="logo-text">Przepływ danych end-to-end</div>
-                <div class="logo-subtitle">Od zgłoszenia, przez bramę decyzyjną 1000 PLN, po archiwum i analitykę</div>
+                <div class="case-label">Department: Architecture · 2/2</div>
+                <div class="logo-text">End-to-end data flow</div>
+                <div class="logo-subtitle">From submission, through the 1000 PLN decision gate, to archive and analytics</div>
             </div>
         </div>
         <div class="header-right">
@@ -65,7 +65,7 @@
     <div class="wrap">
         <div class="diagram">
             <svg viewBox="0 0 1200 470" preserveAspectRatio="xMidYMid meet" role="img" xmlns="http://www.w3.org/2000/svg">
-                <title>Animowany diagram blokowy przepływu danych w architekturze Azure</title>
+                <title>Animated block diagram of data flow in Azure architecture</title>
                 <defs>
                     <linearGradient id="flowgrad" x1="0" y1="0" x2="1" y2="0">
                         <stop offset="0" stop-color="#7eba42"/><stop offset="1" stop-color="#9ad94f"/>
@@ -100,29 +100,29 @@
                 <path class="tri" d="M-5,-4 L6,0 L-5,4 Z"><animateMotion dur="1.5s" begin="-1.3s" rotate="auto" repeatCount="indefinite"><mpath href="#p9"/></animateMotion></path>
 
                 <!-- ===== nodes (spine, y 70..122) ===== -->
-                <g class="gnode" style="animation-delay:0.0s"><rect x="8" y="70" width="150" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="83" y="92" text-anchor="middle">Wniosek</text><text class="n-sub" x="83" y="109" text-anchor="middle">Forms / Power Apps</text></g>
-                <g class="gnode" style="animation-delay:0.12s"><rect x="196" y="70" width="168" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="280" y="92" text-anchor="middle">Brama API</text><text class="n-sub" x="280" y="109" text-anchor="middle">API Mgmt + Entra ID</text></g>
-                <g class="gnode gnode--core" style="animation-delay:0.24s"><rect x="402" y="70" width="176" height="52" rx="10" fill="rgba(126,186,66,0.16)" stroke="rgba(126,186,66,0.45)"/><text class="n-title" x="490" y="92" text-anchor="middle">Rdzeń FastAPI</text><text class="n-sub" x="490" y="109" text-anchor="middle">Azure Functions</text></g>
+                <g class="gnode" style="animation-delay:0.0s"><rect x="8" y="70" width="150" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="83" y="92" text-anchor="middle">Request</text><text class="n-sub" x="83" y="109" text-anchor="middle">Forms / Power Apps</text></g>
+                <g class="gnode" style="animation-delay:0.12s"><rect x="196" y="70" width="168" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="280" y="92" text-anchor="middle">API Gateway</text><text class="n-sub" x="280" y="109" text-anchor="middle">API Mgmt + Entra ID</text></g>
+                <g class="gnode gnode--core" style="animation-delay:0.24s"><rect x="402" y="70" width="176" height="52" rx="10" fill="rgba(126,186,66,0.16)" stroke="rgba(126,186,66,0.45)"/><text class="n-title" x="490" y="92" text-anchor="middle">FastAPI core</text><text class="n-sub" x="490" y="109" text-anchor="middle">Azure Functions</text></g>
 
                 <!-- decision gate (static, no animation) -->
-                <g style="animation:none"><polygon points="640,64 670,96 640,128 610,96" fill="#7eba42" stroke="#9ad94f" stroke-width="1.5"/><text class="gate-label" x="640" y="100" text-anchor="middle">1000 zł?</text></g>
+                <g style="animation:none"><polygon points="640,64 670,96 640,128 610,96" fill="#7eba42" stroke="#9ad94f" stroke-width="1.5"/><text class="gate-label" x="640" y="100" text-anchor="middle">1000 PLN?</text></g>
 
                 <g class="gnode" style="animation-delay:0.46s"><rect x="700" y="70" width="150" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="775" y="92" text-anchor="middle">Service Bus</text><text class="n-sub" x="775" y="109" text-anchor="middle">topic + DLQ</text></g>
-                <g class="gnode" style="animation-delay:0.58s"><rect x="888" y="70" width="176" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="976" y="92" text-anchor="middle">Powiadomienie</text><text class="n-sub" x="976" y="109" text-anchor="middle">e-mail</text></g>
+                <g class="gnode" style="animation-delay:0.58s"><rect x="888" y="70" width="176" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="976" y="92" text-anchor="middle">Notification</text><text class="n-sub" x="976" y="109" text-anchor="middle">e-mail</text></g>
 
                 <!-- decision branch captions -->
-                <text class="edge-label" x="612" y="158" text-anchor="middle">&le;1000: auto / przełożony</text>
-                <text class="edge-label" x="612" y="174" text-anchor="middle" fill="#f0b870">&gt;1000: Dyrektor Działu</text>
+                <text class="edge-label" x="612" y="158" text-anchor="middle">&le;1000: auto / Supervisor</text>
+                <text class="edge-label" x="612" y="174" text-anchor="middle" fill="#f0b870">&gt;1000: Department Director</text>
 
                 <!-- row 2 (y 270..322) -->
-                <g class="gnode gnode--core" style="animation-delay:0.5s"><rect x="415" y="270" width="150" height="52" rx="10" fill="rgba(126,186,66,0.16)" stroke="rgba(126,186,66,0.45)"/><text class="n-title" x="490" y="292" text-anchor="middle">Azure SQL</text><text class="n-sub" x="490" y="309" text-anchor="middle">model 3NF (OLTP)</text></g>
-                <g class="gnode" style="animation-delay:0.62s"><rect x="605" y="270" width="150" height="52" rx="10" fill="rgba(170,140,40,0.20)" stroke="rgba(243,223,138,0.42)"/><text class="n-title" x="680" y="292" text-anchor="middle">Archiwum</text><text class="n-sub" x="680" y="309" text-anchor="middle" fill="#f3df8a">Blob WORM</text></g>
+                <g class="gnode gnode--core" style="animation-delay:0.5s"><rect x="415" y="270" width="150" height="52" rx="10" fill="rgba(126,186,66,0.16)" stroke="rgba(126,186,66,0.45)"/><text class="n-title" x="490" y="292" text-anchor="middle">Azure SQL</text><text class="n-sub" x="490" y="309" text-anchor="middle">3NF model (OLTP)</text></g>
+                <g class="gnode" style="animation-delay:0.62s"><rect x="605" y="270" width="150" height="52" rx="10" fill="rgba(170,140,40,0.20)" stroke="rgba(243,223,138,0.42)"/><text class="n-title" x="680" y="292" text-anchor="middle">Archive</text><text class="n-sub" x="680" y="309" text-anchor="middle" fill="#f3df8a">Blob WORM</text></g>
                 <g class="gnode" style="animation-delay:0.74s"><rect x="795" y="270" width="150" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="870" y="292" text-anchor="middle">Fabric</text><text class="n-sub" x="870" y="309" text-anchor="middle">fact_spend (star)</text></g>
-                <g class="gnode" style="animation-delay:0.86s"><rect x="985" y="270" width="170" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="1070" y="292" text-anchor="middle">Power BI</text><text class="n-sub" x="1070" y="309" text-anchor="middle">raporty wydatków</text></g>
+                <g class="gnode" style="animation-delay:0.86s"><rect x="985" y="270" width="170" height="52" rx="10" fill="rgba(126,186,66,0.10)" stroke="rgba(126,186,66,0.32)"/><text class="n-title" x="1070" y="292" text-anchor="middle">Power BI</text><text class="n-sub" x="1070" y="309" text-anchor="middle">spend reports</text></g>
 
                 <!-- labels for tiers -->
-                <text x="20" y="225" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" letter-spacing="0.12em" fill="#6e7d9c">PLANE: PRZETWARZANIE OPERACYJNE (OLTP)</text>
-                <text x="20" y="360" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" letter-spacing="0.12em" fill="#6e7d9c">PLANE: TRWAŁOŚĆ · ARCHIWUM · ANALITYKA</text>
+                <text x="20" y="225" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" letter-spacing="0.12em" fill="#6e7d9c">PLANE: OPERATIONAL PROCESSING (OLTP)</text>
+                <text x="20" y="360" font-family="Montserrat, sans-serif" font-size="10" font-weight="700" letter-spacing="0.12em" fill="#6e7d9c">PLANE: PERSISTENCE · ARCHIVE · ANALYTICS</text>
                 <line x1="20" y1="232" x2="1160" y2="232" stroke="rgba(126,186,66,0.18)" stroke-dasharray="4 6"/>
             </svg>
         </div>

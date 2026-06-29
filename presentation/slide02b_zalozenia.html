@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pl" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Założenia projektowe</title>
+<title>Design assumptions</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
@@ -47,14 +47,14 @@
         <div class="logo-area">
             <div class="logo-icon"><i class="fas fa-compass-drafting"></i></div>
             <div>
-                <div class="case-label">Dział: Analiza biznesowa · 2/4</div>
-                <div class="logo-text">Założenia projektowe</div>
-                <div class="logo-subtitle">Co przyjęto w tym decku — i co w realnym wdrożeniu doprecyzowałbym na starcie</div>
+                <div class="case-label">Department: Business Analysis · 2/4</div>
+                <div class="logo-text">Design assumptions</div>
+                <div class="logo-subtitle">What this deck assumes — and what I would clarify at the start of a real implementation</div>
             </div>
         </div>
         <div class="header-right">
             <span class="section-pill">03 / 18</span>
-            <span class="status-badge"><i class="fas fa-circle-info"></i> Scope &amp; kontekst</span>
+            <span class="status-badge"><i class="fas fa-circle-info"></i> Scope &amp; context</span>
             <div class="brand-chip"><span class="brand-mark"><i class="fas fa-gift"></i></span><span class="brand-word">Gift<span>Flow</span></span></div>
         </div>
     </div>
@@ -66,16 +66,16 @@
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-assume"><i class="fas fa-lock"></i></div>
-                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Zamknięty zakres wymagań</div></div>
+                        <div><div class="side-kick">Project assumption</div><div class="side-title">Closed requirements scope</div></div>
                     </div>
-                    <p>Prezentacja zakłada, że <strong>wymagania zostały zebrane i są zamknięte</strong> — scenariusz 5 kroków i reguła 1000 PLN są punktem wyjścia do architektury.</p>
+                    <p>This presentation assumes that <strong>requirements have been gathered and are closed</strong> — the 5-step scenario and the 1000 PLN rule are the starting point for architecture.</p>
                 </div>
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-practice"><i class="fas fa-magnifying-glass-chart"></i></div>
-                        <div><div class="side-kick">W praktyce</div><div class="side-title">Analiza rozwoju i integracji</div></div>
+                        <div><div class="side-kick">In practice</div><div class="side-title">Evolution and integration analysis</div></div>
                     </div>
-                    <p>Przed wdrożeniem dodałbym <strong>analizę z perspektywy rozwoju</strong>: nowe typy wniosków, kolejne progi, integracje z HR/ERP i mapę przyszłych przepływów — żeby architektura nie zamknęła się po pierwszym release.</p>
+                    <p>Before implementation I would add <strong>analysis from a growth perspective</strong>: new request types, additional thresholds, HR/ERP integrations, and a map of future flows — so architecture does not lock in after the first release.</p>
                 </div>
             </div>
 
@@ -83,16 +83,16 @@
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-assume"><i class="fas fa-cube"></i></div>
-                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Samodzielny system</div></div>
+                        <div><div class="side-kick">Project assumption</div><div class="side-title">Standalone system</div></div>
                     </div>
-                    <p>Deck opisuje <strong>autonomiczne rozwiązanie</strong> (własny backend, dane, audyt, analityka) — bez wiązania z konkretnym istniejącym landscape’em organizacji.</p>
+                    <p>The deck describes an <strong>autonomous solution</strong> (own backend, data, audit, analytics) — without tying it to a specific existing organizational landscape.</p>
                 </div>
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-practice"><i class="fas fa-puzzle-piece"></i></div>
-                        <div><div class="side-kick">W praktyce</div><div class="side-title">Dopasowanie do ekosystemu IT</div></div>
+                        <div><div class="side-kick">In practice</div><div class="side-title">Fit to the IT ecosystem</div></div>
                     </div>
-                    <p>Architekturę <strong>dopasowałbym do systemów już w użyciu</strong>, kompetencji zespołu utrzymaniowego i ogólnej wizji rozwoju IT — np. hybryda low-code + pro-code, wspólne tożsamości i standardy integracji.</p>
+                    <p>I would <strong>align architecture with systems already in use</strong>, the maintenance team's skills, and the overall IT roadmap — e.g. low-code + pro-code hybrid, shared identities, and integration standards.</p>
                 </div>
             </div>
 
@@ -100,23 +100,23 @@
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-assume"><i class="fas fa-microchip"></i></div>
-                        <div><div class="side-kick">Założenie w projekcie</div><div class="side-title">Ambitne podejście techniczne</div></div>
+                        <div><div class="side-kick">Project assumption</div><div class="side-title">Ambitious technical approach</div></div>
                     </div>
-                    <p>Deck <strong>ewaluuje złożone, pro-code rozwiązanie</strong> (serverless, własny backend, dane, analityka) — zakładając <strong>mocny zespół inżynieryjny</strong> do budowy i utrzymania.</p>
+                    <p>The deck <strong>evaluates a complex, pro-code solution</strong> (serverless, custom backend, data, analytics) — assuming a <strong>strong engineering team</strong> to build and maintain it.</p>
                 </div>
                 <div class="side">
                     <div class="side-head">
                         <div class="side-ic ic-practice"><i class="fas fa-bolt"></i></div>
-                        <div><div class="side-kick">W praktyce</div><div class="side-title">Prostota i gotowe produkty</div></div>
+                        <div><div class="side-kick">In practice</div><div class="side-title">Simplicity and off-the-shelf products</div></div>
                     </div>
-                    <p>Przy chęci czegoś prostego — <strong>formularz Power Apps</strong> z ekosystemu Microsoft. W wielu firmach enterprise standardem jest <strong>kupno gotowego rozwiązania z rynku</strong> i wdrożenie w nim całego procesu decyzyjnego; natomiast rewolucja GenAI zmienia mocno zasady gry i mamy możliwość bezpiecznej eksploracji nowego podejścia do pracy.</p>
+                    <p>For something simpler — a <strong>Power Apps form</strong> from the Microsoft ecosystem. In many enterprises the standard is <strong>buying a ready-made market solution</strong> and implementing the full decision process there; meanwhile the GenAI revolution is changing the rules of the game and we can safely explore new ways of working.</p>
                 </div>
             </div>
         </div>
 
         <div class="note">
             <i class="fas fa-robot"></i>
-            <p><strong>GenAI i decyzja zespołu:</strong> obecna rewolucja GenAI może częściowo zmienić te zasady (copilot BI, kategoryzacja, automatyzacja). Ostateczny wybór build vs buy vs low-code wymaga <strong>szerszej dyskusji w zespole technicznym</strong> — ten deck pokazuje wariant referencyjny pro-code, nie jedyną słuszną ścieżkę.</p>
+            <p><strong>GenAI and team decision:</strong> the current GenAI revolution may partially change these rules (BI copilot, categorization, automation). The final build vs buy vs low-code choice requires <strong>broader discussion within the technical team</strong> — this deck shows a pro-code reference variant, not the only valid path.</p>
         </div>
     </div>
     </div>

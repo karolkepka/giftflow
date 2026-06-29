@@ -5,9 +5,9 @@ from app.utils.Logger import Logger
 
 
 class NotificationService:
-    """Publikuje zdarzenia do Azure Service Bus i wyzwala powiadomienie zwrotne.
+    """Publishes events to Azure Service Bus and triggers feedback notification.
 
-    Sender pochodzi z ``azure-servicebus`` i jest uwierzytelniany Managed Identity.
+    Sender comes from ``azure-servicebus`` and is authenticated via Managed Identity.
     """
 
     def __init__(self, sender):
@@ -19,9 +19,9 @@ class NotificationService:
 
     def publish(self, event_type: str, payload: dict) -> None:
         message = {"event": event_type, "payload": payload}
-        self.log.info("Publikacja zdarzenia: %s -> %s", event_type, self.config["TOPIC"])
+        self.log.info("Publishing event: %s -> %s", event_type, self.config["TOPIC"])
         self.sender.send_messages(json.dumps(message, default=str))
 
     def notify_requester(self, request_id: int, decision: str) -> None:
-        """Krok 3 scenariusza — automatyczny feedback do wnioskodawcy."""
+        """Scenario step 3 — automatic feedback to the requester."""
         self.publish("RequestDecided", {"request_id": request_id, "decision": decision})

@@ -6,10 +6,10 @@ from app.utils.Logger import Logger
 
 
 class AuditArchive:
-    """Niezmienny (WORM) zapis zdarzeń audytu do bezpiecznego archiwum chmurowego.
+    """Immutable (WORM) audit event writes to secure cloud archive.
 
-    Kontener Blob skonfigurowany z polityką immutability — ``overwrite=False``
-    gwarantuje brak nadpisań istniejącego śladu audytowego.
+    Blob container configured with immutability policy — ``overwrite=False``
+    guarantees existing audit trail cannot be overwritten.
     """
 
     def __init__(self, blob_container):
@@ -22,7 +22,7 @@ class AuditArchive:
     def append(self, event_type: str, request) -> None:
         record = {"event": event_type, "request": _to_dict(request)}
         blob_path = f"{self.config['PREFIX']}/{request.request_id}/{event_type}.json"
-        self.log.info("Archiwizacja audytu: %s", blob_path)
+        self.log.info("Archiving audit event: %s", blob_path)
         self.container.upload_blob(blob_path, json.dumps(record, default=str), overwrite=False)
 
 

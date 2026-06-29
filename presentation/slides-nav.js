@@ -63,12 +63,12 @@
     var wrap = document.createElement('div');
     wrap.className = 'slides-nav-ui';
     wrap.setAttribute('role', 'navigation');
-    wrap.setAttribute('aria-label', 'Nawigacja slajdów');
+    wrap.setAttribute('aria-label', 'Slide navigation');
 
     var btnPrev = document.createElement('button');
     btnPrev.type = 'button';
     btnPrev.className = 'slides-nav-prev';
-    btnPrev.setAttribute('aria-label', 'Poprzedni slajd');
+    btnPrev.setAttribute('aria-label', 'Previous slide');
     btnPrev.innerHTML = prevSvg;
     btnPrev.disabled = index === 0;
 
@@ -79,7 +79,7 @@
     var btnNext = document.createElement('button');
     btnNext.type = 'button';
     btnNext.className = 'slides-nav-next';
-    btnNext.setAttribute('aria-label', 'Następny slajd');
+    btnNext.setAttribute('aria-label', 'Next slide');
     btnNext.innerHTML = nextSvg;
     btnNext.disabled = index === SLIDES.length - 1;
 
